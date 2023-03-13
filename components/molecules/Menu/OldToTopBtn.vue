@@ -1,0 +1,46 @@
+<script setup lang="ts">
+import { mdiArrowUp } from "@mdi/js";
+
+interface PropType {
+  id?: string;
+}
+
+const props = withDefaults(defineProps<PropType>(), {
+  id: "",
+});
+
+const fab = ref(false);
+
+const onScroll = (e: any) => {
+  if (typeof window === "undefined") return;
+
+  // const target: any = props.id ? document.getElementById(props.id) : window;
+
+  // if(!target) return;
+
+  const top = /*target*/ window.pageYOffset || e.target.scrollTop || 0;
+  fab.value = top > 20;
+};
+
+const toTop = () => {
+  if (typeof window === "undefined") return;
+  // const target = props.id ? document.getElementById(props.id) : window;
+
+  // if(!target) return;
+  /*target*/ window.scrollTo({
+    top: 0,
+    // behavior: "smooth",
+  });
+};
+</script>
+<template>
+  <v-btn
+    v-show="fab"
+    v-scroll="onScroll"
+    style="position: absolute; right: 16px; bottom: 16px"
+    dark
+    color="error"
+    :icon="mdiArrowUp"
+    @click="toTop"
+  />
+</template>
