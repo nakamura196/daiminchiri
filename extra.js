@@ -75,6 +75,16 @@ export default({
     }
   ],
   "default": {
+    "keys": [
+      {
+        title: "絵図",
+        value: "description",
+      },
+      {
+        title: "分類",
+        value: "ne_class",
+      },
+    ],
     "advanced": [
       {
         "label": "見出し",
@@ -153,7 +163,7 @@ export default({
       "区域色",
       "区域番号",
       "図符等",
-      "地名補足",
+      "地名補足"
     ],
     "aggregations": [
       {

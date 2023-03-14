@@ -79,7 +79,7 @@ const lang = "ja";
 const description = config.description;
 const keywords = config.keywords;
 const image = appUrl + config.image;
-const favicon = appUrl + "/favicon.ico";
+const favicon = appUrl + "/favicons/favicon.ico";
 
 const modeKey = environment === "production" ? "server" : "client";
 const mode = {

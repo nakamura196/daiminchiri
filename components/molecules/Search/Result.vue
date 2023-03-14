@@ -13,7 +13,10 @@ withDefaults(defineProps<PropType>(), {
   <template v-if="layout === 'list'">
     <CustomMoleculesSearchList :items="items"></CustomMoleculesSearchList>
   </template>
-  <template v-else>
+  <template v-else-if="layout === 'grid'">
     <CustomMoleculesSearchGrid :items="items"></CustomMoleculesSearchGrid>
+  </template>
+  <template v-else-if="layout === 'map'">
+    <CustomMoleculesSearchMap :items="items"></CustomMoleculesSearchMap>
   </template>
 </template>

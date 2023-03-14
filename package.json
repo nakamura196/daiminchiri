@@ -21,6 +21,7 @@
     "sass": "^1.58.3"
   },
   "dependencies": {
+    "@nakamura196/osd-custom-viewer": "^2.26.0",
     "cross-env": "^7.0.3",
     "fuse.js": "^6.6.2",
     "nuxt-jsonld": "^2.0.7",

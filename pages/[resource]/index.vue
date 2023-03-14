@@ -195,6 +195,10 @@ useHead({
   titleTemplate: `${title} - %s`,
   meta: [{ property: "og:title", content: `${title} - %s` }],
 });
+
+const hidePagination = computed(() => {
+  return ["map"].includes(layout_.value);
+});
 </script>
 <template>
   <ClientOnly>
@@ -226,24 +230,27 @@ useHead({
           <div class="mt-4">
             <MoleculesSearchTotal :value="total"></MoleculesSearchTotal>
           </div>
-          <MoleculesSearchPagination
-            class="mt-4"
-            v-model="page"
-            :length="length"
-          />
 
-          <MoleculesSearchPerPage
-            class="mt-4"
-            :items="itemsPerPage"
-            v-model="perPage"
-          ></MoleculesSearchPerPage>
+          <template v-if="!hidePagination">
+            <MoleculesSearchPagination
+              class="mt-4"
+              v-model="page"
+              :length="length"
+            />
 
-          <MoleculesSearchSelect
-            class="mt-4"
-            v-model="sort"
-            label="sort_by"
-            :items="itemsSort"
-          />
+            <MoleculesSearchPerPage
+              class="mt-4"
+              :items="itemsPerPage"
+              v-model="perPage"
+            ></MoleculesSearchPerPage>
+
+            <MoleculesSearchSelect
+              class="mt-4"
+              v-model="sort"
+              label="sort_by"
+              :items="itemsSort"
+            />
+          </template>
 
           <MoleculesSearchSelect
             class="mt-4"
@@ -253,7 +260,7 @@ useHead({
           />
         </v-container>
 
-        <v-sheet color="sub">
+        <v-sheet color="sub" v-if="!hidePagination">
           <div class="text-center py-2">
             <v-btn variant="flat" color="primary" @click="isNarrowOpen = true"
               ><v-icon class="mr-1">{{ mdiFilterVariant }}</v-icon>
@@ -263,19 +270,23 @@ useHead({
         </v-sheet>
 
         <v-container>
-          <!-- 関連項目-->
+          <!-- 関連項目
           <HigMoleculesSearchRelated
             v-if="aggregations.related"
             :keyword="routeQuery.keyword"
             :buckets="aggregations.related.buckets"
             class="mb-5"
           ></HigMoleculesSearchRelated>
+          -->
 
           <!-- 結果一覧 -->
-          <MoleculesSearchResult :layout="layout_" :items="hits"></MoleculesSearchResult>
+          <MoleculesSearchResult
+            :layout="layout_"
+            :items="hits"
+          ></MoleculesSearchResult>
 
           <!-- 頁ネーション -->
-          <div class="text-center pt-5 my-5">
+          <div class="text-center pt-5 my-5" v-if="!hidePagination">
             <v-pagination
               size="small"
               v-model="page"
@@ -339,38 +350,45 @@ useHead({
                   </v-tooltip>
                   <MoleculesSearchTotal :value="total"></MoleculesSearchTotal>
                 </v-col>
-                <v-col cols="12" sm="3">
-                  <MoleculesSearchPagination v-model="page" :length="length" />
-                </v-col>
-
-                <v-col cols="6" sm="2">
-                  <!-- <SearchPerPage /> -->
-                  <MoleculesSearchPerPage
-                    :items="itemsPerPage"
-                    v-model="perPage"
-                  ></MoleculesSearchPerPage>
-                </v-col>
-                <v-col cols="6" sm="2">
+                <template v-if="!hidePagination">
+                  <v-col cols="12" sm="3">
+                    <MoleculesSearchPagination
+                      v-model="page"
+                      :length="length"
+                    />
+                  </v-col>
+                  <v-col cols="6" sm="2">
+                    <!-- <SearchPerPage /> -->
+                    <MoleculesSearchPerPage
+                      :items="itemsPerPage"
+                      v-model="perPage"
+                    ></MoleculesSearchPerPage>
+                  </v-col>
+                  <v-col cols="6" sm="2">
+                    <MoleculesSearchSelect
+                      v-model="sort"
+                      label="sort_by"
+                      :items="itemsSort"
+                    />
+                  </v-col>
+                </template>
+                <v-col cols="6" md="2">
                   <MoleculesSearchSelect
-                    v-model="sort"
-                    label="sort_by"
-                    :items="itemsSort"
+                    v-model="layout_"
+                    label="layout"
+                    :items="layouts"
                   />
                 </v-col>
-                  <v-col cols="6" md="2">
-                  <MoleculesSearchSelect
-            v-model="layout_"
-            label="layout"
-            :items="layouts"
-          />
-        </v-col>
               </v-row>
 
               <!-- 結果一覧 -->
-              <MoleculesSearchResult :layout="layout_" :items="hits"></MoleculesSearchResult>
+              <MoleculesSearchResult
+                :layout="layout_"
+                :items="hits"
+              ></MoleculesSearchResult>
 
               <!-- 頁ネーション -->
-              <div class="text-center pt-5 my-5">
+              <div class="text-center pt-5 my-5" v-if="!hidePagination">
                 <v-pagination
                   size="small"
                   v-model="page"
