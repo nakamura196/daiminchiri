@@ -350,22 +350,22 @@ const hidePagination = computed(() => {
                   </v-tooltip>
                   <MoleculesSearchTotal :value="total"></MoleculesSearchTotal>
                 </v-col>
-                <template v-if="!hidePagination">
+                <template v-if="!hidePagination || true">
                   <v-col cols="12" sm="3">
-                    <MoleculesSearchPagination
+                    <MoleculesSearchPagination v-if="!hidePagination"
                       v-model="page"
                       :length="length"
                     />
                   </v-col>
                   <v-col cols="6" sm="2">
                     <!-- <SearchPerPage /> -->
-                    <MoleculesSearchPerPage
+                    <MoleculesSearchPerPage v-if="!hidePagination"
                       :items="itemsPerPage"
                       v-model="perPage"
                     ></MoleculesSearchPerPage>
                   </v-col>
                   <v-col cols="6" sm="2">
-                    <MoleculesSearchSelect
+                    <MoleculesSearchSelect v-if="!hidePagination"
                       v-model="sort"
                       label="sort_by"
                       :items="itemsSort"

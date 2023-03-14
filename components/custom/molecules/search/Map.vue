@@ -38,7 +38,7 @@ const reload = async () => {
   const route = useRoute();
 
   const queryAll = JSON.parse(JSON.stringify(route.query));
-  queryAll.size = 1000;
+  queryAll.size = 500;
 
   const results = await $search(queryAll, "fuse");
 
@@ -264,13 +264,17 @@ const keys: any[] = publicRuntimeConfig.default.keys;
           <v-icon>{{ mdiHome }}</v-icon>
         </v-btn>
 
-        <span
-          v-if="$refs.ocv && $refs.ocv.size > 0"
-          style="vertical-align: middle"
-        >
-          <span> | </span>
-          <small>{{ page }} / {{ $refs.ocv.size }}</small>
-        </span>
+        <!-- 要検討 -->
+        <template v-if="false">
+            <span
+            v-if="$refs.ocv && $refs.ocv.size > 0"
+            style="vertical-align: middle"
+            >
+            <span> | </span>
+            <small>{{ page }} / {{ $refs.ocv.size }}</small>
+            </span>
+
+        </template>
 
         <span style="vertical-align: middle"> | </span>
 
@@ -289,6 +293,7 @@ const keys: any[] = publicRuntimeConfig.default.keys;
         </v-btn>
       </div>
 
+      <!--
       <OsdCustomViewer
         v-if="targetIdMap"
         ref="ocv"
@@ -300,6 +305,18 @@ const keys: any[] = publicRuntimeConfig.default.keys;
         :fit_id="fit_id"
         :show_all="true"
       ></OsdCustomViewer>
+      -->
+      <MoleculesOsd2
+        v-if="targetIdMap"
+        ref="ocv"
+        :id="id"
+        @updatedSeletecd="updatedSeletecd"
+        :manifest="manifest"
+        :use_custom_buttons="true"
+        :regions="regions"
+        :fit_id="fit_id"
+        :show_all="true"
+      ></MoleculesOsd2>
     </v-col>
   </v-row>
 </template>

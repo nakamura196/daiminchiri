@@ -13,7 +13,7 @@ const top_link = publicRuntimeConfig.top_link;
           <b style="color: white">{{ $t($config.title) }}</b>
         </h1>
 
-        <v-btn v-if="top_link" color="error" :to="localePath(top_link)">{{ $t("try_out") }}</v-btn>
+        <v-btn flat v-if="top_link" color="error" :to="localePath(top_link)">{{ $t("try_out") }}</v-btn>
       </v-container>
     </div>
   </div>
