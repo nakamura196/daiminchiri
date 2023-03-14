@@ -18,7 +18,7 @@ if (type === "fuse") {
     let rawdata_ = fs.readFileSync(index_path);
     const rawdata: any[] = JSON.parse(rawdata_);
 
-    const ids = rawdata; // .slice(0,20)
+    const ids = rawdata //.slice(0,20)
 
     /*
     const ids = [];
@@ -81,7 +81,7 @@ const keywords = config.keywords;
 const image = appUrl + config.image;
 const favicon = appUrl + "/favicons/favicon.ico";
 
-const modeKey = environment === "production" ? "server" : "client";
+const modeKey = conf_env_value.mode
 const mode = {
   server: {
     ssr: true,

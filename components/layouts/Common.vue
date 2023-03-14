@@ -17,9 +17,9 @@ withDefaults(defineProps<PropType>(), {
       v-if="items.length > 0"
       :items="items"
     ></MoleculesMenuBreadCrumbs>
-    <div class="my-5">
+    <div>
       <template v-if="container">
-        <v-container>
+        <v-container class="my-5">
           <slot />
         </v-container>
       </template>

@@ -13,19 +13,9 @@ withDefaults(defineProps<PropType>(), {
 
 const localePath = useLocalePath();
 
-const keys = [
-  {
-    title: "絵図",
-    value: "description",
-  },
-  {
-    title: "分類",
-    value: "ne_class",
-  },
-];
-
 const publicRuntimeConfig = useRuntimeConfig().public;
 const no_image = publicRuntimeConfig.search.no_image;
+const keys: any[] = publicRuntimeConfig.default.keys;
 </script>
 <template>
   <v-card variant="outlined" v-for="item in items" :key="item.id" class="mb-4">
@@ -75,7 +65,7 @@ const no_image = publicRuntimeConfig.search.no_image;
                   v-html="
                     highlight(route, item[key.value], key.value, item.matches)
                   "
-                ></span>
+                ></span>&nbsp;
               </template>
             </span>
           </div>

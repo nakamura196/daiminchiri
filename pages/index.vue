@@ -1,10 +1,13 @@
+<script setup lang="ts">
+const {locale} = useI18n()
+const data = await queryContent(`/${locale.value}/`).findOne();
+</script>
 <template>
   <div>
     <MoleculesMenuTopImage></MoleculesMenuTopImage>
 
     <v-container>
-      option
-      <!-- <CustomMoleculesMenu></CustomMoleculesMenu> -->
+      <ContentRenderer :value="data" />
     </v-container>
 
     <div class="bg-sub">

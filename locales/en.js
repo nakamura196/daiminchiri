@@ -90,4 +90,5 @@ export default {
     "ご利用前に利用条件をお読み下さい": "Terms of Use",
     "detail": "Detail",
     "別ウィンドウで開く": "Open in a new window",
+    "try_out": "Try out",
 }

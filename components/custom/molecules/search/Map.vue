@@ -16,6 +16,7 @@ const isMobile = computed(() => {
 
 const id = "abc";
 const page = ref<number>(1);
+const fit_id = ref("");
 
 const manifest =
   "https://gist.githubusercontent.com/nakamura196/91c2aab79528ee285270178aee0a7593/raw/cee7289eaaf7b6a623fcb1ffe2db6c8e833680f9/manifest.json";
@@ -33,10 +34,11 @@ const regions = ref<string[]>([]);
 const targetIdMap: any = ref(null);
 
 const reload = async () => {
+  fit_id.value = "";
   const route = useRoute();
 
   const queryAll = JSON.parse(JSON.stringify(route.query));
-  queryAll.size = 500;
+  queryAll.size = 1000;
 
   const results = await $search(queryAll, "fuse");
 
@@ -115,8 +117,6 @@ const headers = ref([
     key: "fit",
   },
 ]);
-
-const fit_id = ref("");
 
 const updatedSeletecd = (e: any) => {
   const selected_id = e.selected_id;
@@ -207,7 +207,8 @@ const keys: any[] = publicRuntimeConfig.default.keys;
               <div class="mt-2">
                 <template v-for="key in keys">
                   <template v-if="item[key.value]">
-                    {{ key.title }}: {{ item[key.value] }}
+                    <span>{{ key.title }}</span
+                    >: {{ item[key.value] }}&nbsp;
                   </template>
                 </template>
               </div>

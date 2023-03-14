@@ -72,21 +72,19 @@ const createAggs = (result: any, aggregations: any) => {
   return es;
 };
 
-const fixValue = (value: string, prefix = "") => {
-  // フレーズ検索（完全一致）
-  if (value.startsWith("-")) {
-    //value = "\'!" + value.slice(1) + "\'";
-    value = "!" + value.slice(1);
-  } else if (value.includes('"')) {
-    value = "=" + value.split('"').join("");
-  } else {
-    value = prefix + value;
-  }
-  return value;
-};
-
 let documents: any = null;
 let fuse: any = null;
+
+const getKeywords = (keyword_: any) => {
+  if(!keyword_) return [];
+  if (typeof keyword_ !== "string") {
+    keyword_ = keyword_.join(" ");
+  }
+
+  const keywords: string[] = keyword_.split("　").join(" ").split(" ")
+
+  return keywords.filter(n => n !== "")
+}
 
 const searchByFuse: any = async (query: any) => {
   const runtimeConfig = useRuntimeConfig();
@@ -118,24 +116,29 @@ const searchByFuse: any = async (query: any) => {
   const currentQuery = query;
 
   let keyword_ = currentQuery.keyword;
-  if (keyword_) {
+  const keywords = getKeywords(keyword_)
+  if (keywords.length > 0) {
     const keywordQuery = [];
 
-    if (typeof keyword_ !== "string") {
-      keyword_ = keyword_.join("");
-    }
-
-    if (keyword_) {
-      for (let key of options.keys) {
-        //重みを付けている場合
-        // {name, weight} という形式になっている
-        if (typeof key !== "string") {
-          key = key.name;
-        }
-        keywordQuery.push({
-          [key]: fixValue(keyword_),
-        });
+    for (let key of options.keys) {
+      //重みを付けている場合
+      // {name, weight} という形式になっている
+      if (typeof key !== "string") {
+        key = key.name;
       }
+
+      const andQ = []
+
+      
+      for(const keyword of keywords) {
+        andQ.push({
+          [key]: `'"${keyword}"` 
+        })
+      }
+
+      keywordQuery.push({
+        $and: andQ
+      })
     }
 
     if (keywordQuery.length > 0) {
@@ -144,6 +147,7 @@ const searchByFuse: any = async (query: any) => {
       });
     }
   }
+  
 
   // 詳細検索
   for (const key in currentQuery) {
@@ -161,8 +165,14 @@ const searchByFuse: any = async (query: any) => {
       }
       const field = key.replace("q-", "");
       if (value) {
-        // andQueries.push({ [field]: fixValue(value) });
-        qQueries.push({ [field]: fixValue(value) });
+        if(value.startsWith("-")) {
+          qQueries.push({ [field]: `!"${value}"` }); // Items that do not include
+        } else if(value.includes("\"")){
+          const value_ = value.split("\"").join("");
+          qQueries.push({ [field]: `="${value_}"` }); // Items that include
+        } else {
+          qQueries.push({ [field]: `'"${value}"` }); // Items that include
+        }
       }
 
       if (qQueries.length > 0) {
@@ -188,16 +198,16 @@ const searchByFuse: any = async (query: any) => {
           if (value.startsWith("-")) {
             hasMinus = true;
           }
-          // 今後要修正
-          const aaa = fixValue(value, "=");
-          if (aaa.startsWith("!") && aaa.includes(" ")) {
-            const bbb = `!\"${aaa.substring(1)}\"`;
-            orQueries.push({ [field]: bbb });
-          } else if (aaa.includes(" ")) {
-            const bbb = `\"${aaa.substring(1)}\"`;
-            orQueries.push({ [field]: bbb });
+
+          if(value.startsWith("-")) {
+            const value_ = value.substring(1);
+
+            const notAndQueries = [];
+            notAndQueries.push({ [field]: `!^"${value_}"` });// Items that do not start with
+            notAndQueries.push({ [field]: `!"${value_}"$` });// Items that do not end with
+            orQueries.push({ $or: notAndQueries }); // !
           } else {
-            orQueries.push({ [field]: aaa });
+            orQueries.push({ [field]: `="${value}"` });
           }
         }
       }

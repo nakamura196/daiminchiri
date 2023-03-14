@@ -1,4 +1,5 @@
 <script setup lang="ts">
+// import { OsdCustomViewer } from "@nakamura196/osd-custom-viewer";
 // const route = useRoute();
 import { mdiCommentQuoteOutline } from "@mdi/js";
 
@@ -10,31 +11,32 @@ interface PropType {
   item?: any;
 }
 
-withDefaults(defineProps<PropType>(), {
+const props = withDefaults(defineProps<PropType>(), {
   item: () => {},
 });
 
-const values = [
-  "_id",
-  "label",
-  "見出し読み",
-  "ローマ字1",
-  "ローマ字2",
-  "対訳語",
-  "説明文",
-  "related",
-  "著者",
-  "出典",
-  "ページ番号",
-  "出版社",
-  "出版年",
-  "言語",
-  "時代",
-];
+const publicRuntimeConfig = useRuntimeConfig().public;
+const details: any = publicRuntimeConfig.default.details;
+
+const manifest =
+  "https://gist.githubusercontent.com/nakamura196/91c2aab79528ee285270178aee0a7593/raw/cee7289eaaf7b6a623fcb1ffe2db6c8e833680f9/manifest.json";
+
+// console.log(props.item)
 </script>
 
 <template>
   <div>
+    <div class="bg-sub">
+      <v-container class="py-0">
+        <ClientOnly>
+          <OsdCustomViewer
+            :height="300"
+            :manifest="manifest"
+            :default_region="item.xywh"
+          ></OsdCustomViewer>
+        </ClientOnly>
+      </v-container>
+    </div>
     <v-container>
       <h1 class="mb-10">{{ item.label }}</h1>
 
@@ -91,34 +93,19 @@ const values = [
         </thead>
         -->
         <tbody>
-          <template v-for="key in values">
-            <tr v-if="item[key]">
-              <td class="py-2">{{ $t(key) }}</td>
+          <template v-for="detail in details">
+            <tr v-if="item[detail.value]">
+              <td width="30%" class="py-2">{{ $t(detail.title) }}</td>
               <td class="py-2">
                 <!--{{ formatArrayValue(item[key]) }}-->
-                <template v-if="Array.isArray(item[key])">
-                  <template v-for="(value, index) in item[key]">
+                <template v-if="Array.isArray(item[detail.value])">
+                  <template v-for="(value, index) in item[detail.value]">
                     <span v-if="index > 0">, </span>
-                    <template v-if="key === 'related'">
-                      <nuxt-link
-                        :to="
-                          localePath({
-                            name: 'resource',
-                            params: { resource: 'item' },
-                            query: { keyword: value },
-                          })
-                        "
-                      >
-                        {{ $t(value) }}
-                      </nuxt-link>
-                    </template>
-                    <template v-else>
-                      {{ $t(value) }}
-                    </template>
+                    <CustomMoleculesSearchDetail :id="item._id" :config="detail" :value="value"></CustomMoleculesSearchDetail>
                   </template>
                 </template>
                 <template v-else>
-                  {{ item[key] }}
+                  <CustomMoleculesSearchDetail :id="item._id" :config="detail" :value="item[detail.value]"></CustomMoleculesSearchDetail>
                 </template>
               </td>
             </tr>
@@ -130,7 +117,7 @@ const values = [
     <v-sheet class="bg-sub">
       <v-container class="text-center pb-10">
         <h4 class="mb-4">{{ $t("利用条件") }}</h4>
-        <p style="word-wrap: break-word; ">
+        <p style="word-wrap: break-word">
           <nuxt-link
             :to="localePath({ name: 'page-slug', params: { slug: 'use' } })"
           >
