@@ -2,7 +2,7 @@
 const slug = useRoute().params.slug;
 const {locale} = useI18n()
 
-console.log(`/${locale.value}/news/` + slug)
+const {t} = useI18n();
 
 const item = await queryContent(`/${locale.value}/news/` + slug).findOne();
 
@@ -10,12 +10,12 @@ const localePath = useLocalePath();
 
 const bh = [
   {
-    title: "トップ",
+    title: t("top"),
     disabled: false,
     to: localePath({ name: "index" }),
   },
   {
-    title: "お知らせ",
+    title: t("News"),
     disabled: false,
     to: localePath({ name: "news" }),
   },

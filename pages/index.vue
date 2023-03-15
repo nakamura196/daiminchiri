@@ -13,10 +13,10 @@ const data = await queryContent(`/${locale.value}/`).findOne();
     <div class="bg-sub">
       <v-container class="pa-10">
         <p class="mb-5">
-          <b>お知らせ</b>
+          <b>{{ $t("News") }}</b>
           <span class="ml-5"
             ><nuxt-link :to="localePath({ name: 'news' })"
-              ><small>すべて</small></nuxt-link
+              ><small>{{ $t("all") }}</small></nuxt-link
             ></span
           >
         </p>

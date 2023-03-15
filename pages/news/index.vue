@@ -1,13 +1,14 @@
 <script setup lang="ts">
 const localePath = useLocalePath();
+const {t} = useI18n();
 const bh = [
   {
-    title: "トップ",
+    title: t("top"),
     disabled: false,
     to: localePath({ name: "index" }),
   },
   {
-    title: "お知らせ",
+    title: t("News"),
     disabled: false
   }
 ];

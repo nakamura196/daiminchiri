@@ -33,7 +33,7 @@ const modelValue_: any = ref(props.modelValue);
     variant="outlined"
     hide-details
     outlined
-    :label="$t(label)"
+    :label="label"
     :items="items"
     dense
     @update:model-value="onInputText"

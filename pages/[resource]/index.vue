@@ -55,7 +55,14 @@ for (const option of sorts) {
   }
 }
 
-const layouts = $config.default.layouts;
+const layouts_ = $config.default.layouts;
+const itemsLayout: any[] = [];
+for (const option of layouts_) {
+  itemsLayout.push({
+    title: t(option.title),
+    value: option.value,
+  });
+}
 
 const routeQuery: any = computed(() => {
   return useRoute().query;
@@ -247,7 +254,7 @@ const hidePagination = computed(() => {
             <MoleculesSearchSelect
               class="mt-4"
               v-model="sort"
-              label="sort_by"
+              :label="$t('sort_by')"
               :items="itemsSort"
             />
           </template>
@@ -255,8 +262,8 @@ const hidePagination = computed(() => {
           <MoleculesSearchSelect
             class="mt-4"
             v-model="layout_"
-            label="layout"
-            :items="layouts"
+            :label="$t('layout')"
+            :items="itemsLayout"
           />
         </v-container>
 
@@ -367,7 +374,7 @@ const hidePagination = computed(() => {
                   <v-col cols="6" sm="2">
                     <MoleculesSearchSelect v-if="!hidePagination"
                       v-model="sort"
-                      label="sort_by"
+                      :label="$t('sort_by')"
                       :items="itemsSort"
                     />
                   </v-col>
@@ -375,8 +382,8 @@ const hidePagination = computed(() => {
                 <v-col cols="6" md="2">
                   <MoleculesSearchSelect
                     v-model="layout_"
-                    label="layout"
-                    :items="layouts"
+                    :label="$t('layout')"
+                    :items="itemsLayout"
                   />
                 </v-col>
               </v-row>

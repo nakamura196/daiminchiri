@@ -91,4 +91,9 @@ export default {
     "detail": "Detail",
     "別ウィンドウで開く": "Open in a new window",
     "try_out": "Try out",
+    "list": "List",
+    "grid": "Grid",
+    "map": "Map",
+    "layout": "Layout",
+    "News": "News",
 }
