@@ -58,6 +58,10 @@ export default {
       to: { name: "resource", params: { resource: "item" } },
     },
     {
+      title: "map",
+      to: { name: "map" },
+    },
+    {
       title: "about",
       to: {
         name: "page-slug",
