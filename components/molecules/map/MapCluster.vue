@@ -14,7 +14,7 @@ import {
 
 interface PropType {
   zoom: number;
-  center: number[];
+  center: any;
   tileProviders?: {
     name: string;
     attribution: string;
@@ -69,13 +69,12 @@ onMounted(() => {
     :markerZoomAnimation="true"
     :useGlobalLeaflet="true"
   >
-    <l-control-layers />
+    <l-control-layers v-if="tileProviders.length > 1"/>
     <l-control-zoom />
     <l-tile-layer
       v-for="tileProvider in tileProviders"
       :key="tileProvider.name"
       :name="tileProvider.name"
-      :visible="tileProvider.visible"
       :url="tileProvider.url"
       :attribution="tileProvider.attribution"
       layer-type="base"

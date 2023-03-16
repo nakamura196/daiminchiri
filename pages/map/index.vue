@@ -1,37 +1,13 @@
 <script setup lang="ts">
 import { $search } from "~/utils/search";
-// import L from 'leaflet'
-// import { MarkerClusterGroup } from 'leaflet.markercluster';
-import 'leaflet.markercluster/dist/MarkerCluster.css'
-import 'leaflet.markercluster/dist/MarkerCluster.Default.css'
-
-const localePath = useLocalePath();
 
 const routeQuery = useRoute().query;
+
+const localePath = useLocalePath();
 
 const zoom = ref(5);
 const center = ref([42.43242, 129.74148]);
 const coordinates = ref<any[]>([]);
-
-const lmap = ref<any>(null);
-
-const markersGroup = ref(null);
-
-const handleMapSetup = async () => {
-  // console.log(lmap.value.center);
-  /*
-  markersGroup.value = new MarkerClusterGroup()
-  lmap.value.leafletObject.addLayer(markersGroup.value)
-
-  await nextTick();
-  
-  markersGroup.value.addLayers(
-    coordinates.value.map((s) => {
-      return L.marker(s.c)
-    })
-  );
-  */
-};
 
 onMounted(async () => {
   const q: any = routeQuery.value || {};
@@ -47,6 +23,12 @@ onMounted(async () => {
         id: item._id,
         label: item.label,
         c: coordinate,
+        to: localePath({
+            name: "resource-id",
+            params: { 
+                resource: 'item',
+                id: item._id },
+        })
       });
 
       if (coordinates_.length > 10000/* > 200*/) {
@@ -57,42 +39,20 @@ onMounted(async () => {
 
   coordinates.value = coordinates_;
 });
+
+const tileProviders = [
+    {
+      name: "国土地理院ウェブサイト",
+      attribution:
+        '国土地理院ウェブサイト',
+      url: "https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png",
+    },
+  ]
 </script>
 <template>
   <div style="height: 100%; width: 100%">
-    <l-map
-      @ready="handleMapSetup"
-      :use-global-leaflet="false"
-      ref="lmap"
-      v-model:zoom="zoom"
-      :center="center"
-    >
-      <l-tile-layer
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        layer-type="base"
-        name="OpenStreetMap"
-      ></l-tile-layer>
-
-      <l-marker
-        v-for="coordinate in coordinates"
-        :lat-lng="coordinate.c"
-        draggable
-      >
-        <l-popup>
-          <nuxt-link
-            :to="
-              localePath({
-                name: 'resource-id',
-                params: {
-                  resource: 'item',
-                  id: coordinate.id,
-                },
-              })
-            "
-            >{{ coordinate.label }}</nuxt-link
-          >
-        </l-popup>
-      </l-marker>
-    </l-map>
+    <ClientOnly>
+        <MoleculesMapCluster :zoom="zoom" :center="center" :coordinates="coordinates"></MoleculesMapCluster>
+    </ClientOnly>
   </div>
 </template>

@@ -102,9 +102,9 @@ export default defineNuxtConfig({
     payloadExtraction: false,
   },
   */
-  ssr: mode[modeKey].ssr,
+  // ssr: mode[modeKey].ssr,
   modules: [
-    "@nuxt/content",
+    // "@nuxt/content",
     "@nuxtjs/i18n",
     "nuxt-simple-sitemap",
     "nuxt-jsonld",
@@ -122,8 +122,11 @@ export default defineNuxtConfig({
     "@/assets/styles/main.css",
   ],
   build: {
-    transpile: ["vuetify"],
+    transpile: [
+      "vuetify"
+    ],
   },
+  /*
   vite: {
     define: {
       "process.env.DEBUG": false,
@@ -132,6 +135,7 @@ export default defineNuxtConfig({
   nitro: {
     preset: mode[modeKey].preset,
   },
+  */
   app: {
     baseURL: baseUrl, // : app_baseUrl,
     head: {
@@ -198,7 +202,9 @@ export default defineNuxtConfig({
     },
     */
   },
+  /*
   generate: {
     routes,
   },
+  */
 });
