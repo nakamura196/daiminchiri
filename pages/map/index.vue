@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { $search } from "~/utils/search";
+// import L from 'leaflet'
 // import { MarkerClusterGroup } from 'leaflet.markercluster';
+import 'leaflet.markercluster/dist/MarkerCluster.css'
+import 'leaflet.markercluster/dist/MarkerCluster.Default.css'
 
 const localePath = useLocalePath();
 
@@ -16,15 +19,15 @@ const markersGroup = ref(null);
 
 const handleMapSetup = async () => {
   // console.log(lmap.value.center);
-
-  // markersGroup.value = new MarkerClusterGroup()
+  /*
+  markersGroup.value = new MarkerClusterGroup()
+  lmap.value.leafletObject.addLayer(markersGroup.value)
 
   await nextTick();
-
-  /*
+  
   markersGroup.value.addLayers(
     coordinates.value.map((s) => {
-      return L.marker(s)
+      return L.marker(s.c)
     })
   );
   */
@@ -46,7 +49,7 @@ onMounted(async () => {
         c: coordinate,
       });
 
-      if (coordinates_.length > 200) {
+      if (coordinates_.length > 10000/* > 200*/) {
         break;
       }
     }
