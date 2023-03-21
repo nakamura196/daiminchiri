@@ -23,7 +23,6 @@ onMounted(async () => {
   const tileSources: string[] = []
   const res = await fetch(props.manifest)
     const data = await res.json()
-  console.log({data})
   title.value = data.label
   attribution.value = data.attribution
   const canvases = data.sequences[0].canvases

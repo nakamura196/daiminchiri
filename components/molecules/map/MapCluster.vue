@@ -40,6 +40,12 @@ const props = withDefaults(defineProps<PropType>(), {
 const zoom_ = ref(props.zoom);
 const center_ = ref(props.center);
 
+/*
+const emit = defineEmits<{
+  (action: string): void
+}>()
+*/
+
 onMounted(() => {
   L.Map.addInitHook(function () {
     const markerCluster = L.markerClusterGroup({
@@ -51,7 +57,8 @@ onMounted(() => {
 
     for(const e of props.coordinates) {
       const marker = L.marker(e.c);
-      marker.bindPopup(e.label);
+
+      marker.bindPopup(`<a target="_blank" href="${e.to}">${e.label}</a>`);
       markers.push(marker);
     }
 
@@ -70,7 +77,7 @@ onMounted(() => {
     :useGlobalLeaflet="true"
   >
     <l-control-layers v-if="tileProviders.length > 1"/>
-    <l-control-zoom />
+
     <l-tile-layer
       v-for="tileProvider in tileProviders"
       :key="tileProvider.name"

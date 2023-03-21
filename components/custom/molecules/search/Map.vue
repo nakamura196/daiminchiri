@@ -122,27 +122,6 @@ const updatedSeletecd = (e: any) => {
   const selected_id = e.selected_id;
   const id = targetIdMap.value[selected_id];
 
-  /*
-  console.log({ id });
-
-  const target = document.getElementById("marker-list");
-  const targetDOMRect = target.getBoundingClientRect();
-
-  const element = document.getElementById(id);
-    const elementDOMRect = element.getBoundingClientRect();
-    console.log(targetDOMRect, elementDOMRect)
-
-    const targetTop = elementDOMRect.top - targetDOMRect.top;
-    console.log({targetTop})
-  if (target) {
-    console.log({target})
-    target.scrollTo({
-      top: 1 * 500, // targetTop, //0,
-      behavior: "smooth",
-    });
-  }
-  */
-
   const el = document.getElementById(id);
   if (el) {
     el.scrollIntoView({ behavior: "smooth" });

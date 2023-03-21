@@ -1,4 +1,5 @@
 import Fuse from "fuse.js";
+import itaiji from '@/assets/json/itaiji.json'
 
 const createAggs = (result: any, aggregations: any) => {
   const aggs: any = {};
@@ -89,6 +90,8 @@ const getKeywords = (keyword_: any) => {
 const searchByFuse: any = async (query: any) => {
   const runtimeConfig = useRuntimeConfig();
 
+  
+
   const options = {
     includeScore: true,
     keys: runtimeConfig.default.searchKeys,
@@ -98,11 +101,23 @@ const searchByFuse: any = async (query: any) => {
     ignoreLocation: true,
     // distance: 1000
     // distance: 0
+    /*
+    preprocess: (text: any) => {
+      let text_ = text;
+
+      for (const key in itaiji) {
+        text_ = text_.split(key).join(itaiji[key]);
+      }
+
+      return text_;
+    }
+    */
   };
 
   if (!fuse) {
     if (!documents) {
-      documents = JSON.parse(JSON.stringify(await getDocuments()));
+      const a = await getDocuments();
+      documents = JSON.parse(JSON.stringify(a));
     }
 
     fuse = new Fuse(documents, options);
@@ -234,7 +249,7 @@ const searchByFuse: any = async (query: any) => {
   } else {
     const fuseResult = fuse.search(searchQuery);
     result_ = fuseResult.map((item: any) => {
-      const item_ = item.item;
+      const item_ = item.item.raw;
       item_._score = item.score;
       return item_;
     });
@@ -342,6 +357,9 @@ const getDocuments = async () => {
     // const { data } = await useFetch(url);
 
     let documents: any = [];
+    // const raw: any[] = []
+
+    const documents_ = []
 
     for (const item of items) {
       const doc: any = {
@@ -364,10 +382,73 @@ const getDocuments = async () => {
 
           doc[key] = value;
         }
+
+
       }
 
+      
+      /*
+      
+
+      for(const item of documents) {
+        const item_: any = {}
+        for (const key in item) {
+
+          let values = item[key]
+          if(typeof values === "string") {
+            values = [values]
+          }
+          
+          const values_ = []
+          for(const value of values) {
+            for (const key_ in itaiji) {
+              if(value.includes(key_)) {
+                values_.push(value.split(key_).join(itaiji[key_]))
+              } else {
+                values_.push(value)
+              }
+            }
+          }
+
+          item_[key] = values_
+          
+        }
+        documents_.push(item_)
+      }
+
+      */
+
+      const item_: any = {}
+
+      for (const key in doc) {
+        let values = doc[key]
+        if(typeof values !== "object") {
+          values = [values]
+        }
+        
+        const values_ = []
+        for(let value of values) {
+          value = String(value)
+          for (const key_ in itaiji) {
+            if(value.includes(key_)) {
+              value = value.split(key_).join(itaiji[key_])
+            }
+          }
+          values_.push(value)
+        }
+
+        item_[key] = values_
+      }
+
+      documents_.push(item_)
       documents.push(doc);
     }
+
+    return {
+      raw: documents,
+      documents: documents_,
+    }
+
   } else {
     const url = appUrl + `/data/index.json`;
 
@@ -375,23 +456,40 @@ const getDocuments = async () => {
 
     const data = await res.json();
 
-    documents = data;
+    // const raw = JSON.parse(JSON.stringify(data));
+
+    const documents_ = []
+
+    for(const item of data) {
+      const item_: any = {}
+      for (const key in item) {
+        let values = item[key]
+        if(typeof values !== "object") {
+          values = [values]
+        }
+        
+        const values_ = []
+        for(let value of values) {
+          value = String(value)
+          for (const key_ in itaiji) {
+            if(value.includes(key_)) {
+              value = value.split(key_).join(itaiji[key_])
+            }
+          }
+          values_.push(value)
+        }
+
+        item_[key] = values_
+      }
+
+      item_.raw = item
+
+      documents_.push(item_)
+    }
+
+    return documents_
+
   }
-
-  /*
-
-  if (!data.value) {
-    const { data } = await useFetch(url);
-    documents = data.value;
-  } else {
-    documents = data.value;
-  }
-
-  */
-
-  console.log({ documents });
-
-  return documents;
 };
 
 export { searchByFuse };

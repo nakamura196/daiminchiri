@@ -84,7 +84,7 @@ const getKeywordQueries = (route: any) => {
 };
 
 // 今後、要検討
-const highlight = (route:any, text: string, key: string, matches = null) => {
+const highlight = (route:any, text: string, key: string, matches = null, itaiji = {}) => {
   if (!text) return text;
 
   const { queries, keywords } = getKeywordQueries(route);
@@ -114,7 +114,13 @@ const highlight = (route:any, text: string, key: string, matches = null) => {
     // 否定語の場合は、2文字目から
     // if (value.startsWith("-")) value = value.substring(1);
     */
-    const regexp = new RegExp(value, "gi");
+
+    let values = [value]
+    if(itaiji[value]){
+      values = itaiji[value]
+    }
+
+    const regexp = new RegExp(values.join("|"), "gi");
     text = text.replace(regexp, function (match) {
       return '<span class="highlight">' + match + "</span>";
     });

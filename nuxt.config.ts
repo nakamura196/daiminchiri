@@ -2,6 +2,23 @@
 const fs = require("fs");
 import { $rs } from "./utils/resourcesync.js";
 
+import itaiji from './assets/json/itaiji.json'
+
+const itaiji2: any = {}
+for(const key in itaiji){
+  const value = itaiji[key]
+
+  if(!itaiji2[key]){
+    itaiji2[key] = [key]
+  }
+  itaiji2[key].push(value)
+
+  if(!itaiji2[value]){
+    itaiji2[value] = [value]
+  }
+  itaiji2[value].push(key)
+}
+
 const environment = process.env.APP_MODE;
 
 const type = "fuse";
@@ -95,6 +112,8 @@ const mode = {
 
 config.mode = modeKey;
 
+config.itaiji = itaiji2
+
 export default defineNuxtConfig({
   /*
   sourcemap: false,
@@ -102,7 +121,7 @@ export default defineNuxtConfig({
     payloadExtraction: false,
   },
   */
-  // ssr: mode[modeKey].ssr,
+  ssr: mode[modeKey].ssr,
   modules: [
     // "@nuxt/content",
     "@nuxtjs/i18n",
@@ -126,7 +145,6 @@ export default defineNuxtConfig({
       "vuetify"
     ],
   },
-  /*
   vite: {
     define: {
       "process.env.DEBUG": false,
@@ -135,7 +153,6 @@ export default defineNuxtConfig({
   nitro: {
     preset: mode[modeKey].preset,
   },
-  */
   app: {
     baseURL: baseUrl, // : app_baseUrl,
     head: {

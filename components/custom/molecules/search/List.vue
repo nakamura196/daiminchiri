@@ -16,6 +16,8 @@ const localePath = useLocalePath();
 const publicRuntimeConfig = useRuntimeConfig().public;
 const no_image = publicRuntimeConfig.search.no_image;
 const keys: any[] = publicRuntimeConfig.default.keys;
+
+const itaiji = publicRuntimeConfig.itaiji;
 </script>
 <template>
   <v-card variant="outlined" v-for="item in items" :key="item.id" class="mb-4">
@@ -51,7 +53,7 @@ const keys: any[] = publicRuntimeConfig.default.keys;
                   },
                 })
               "
-              v-html="highlight(route, item.label, 'label', item.matches)"
+              v-html="highlight(route, item.label, 'label', item.matches, itaiji)"
             >
             </nuxt-link>
           </h4>
@@ -63,7 +65,7 @@ const keys: any[] = publicRuntimeConfig.default.keys;
                 >:
                 <span
                   v-html="
-                    highlight(route, item[key.value], key.value, item.matches)
+                    highlight(route, item[key.value], key.value, item.matches, itaiji)
                   "
                 ></span>&nbsp;
               </template>
