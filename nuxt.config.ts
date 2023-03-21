@@ -1,25 +1,10 @@
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 const fs = require("fs");
 import { $rs } from "./utils/resourcesync.js";
-
-import itaiji from './assets/json/itaiji.json'
-
-const itaiji2: any = {}
-for(const key in itaiji){
-  const value = itaiji[key]
-
-  if(!itaiji2[key]){
-    itaiji2[key] = [key]
-  }
-  itaiji2[key].push(value)
-
-  if(!itaiji2[value]){
-    itaiji2[value] = [value]
-  }
-  itaiji2[value].push(key)
-}
+import { createItaijiMap } from "./utils/itaiji.js";
 
 const environment = process.env.APP_MODE;
+console.log({environment})
 
 const type = "fuse";
 
@@ -112,7 +97,7 @@ const mode = {
 
 config.mode = modeKey;
 
-config.itaiji = itaiji2
+config.itaiji = createItaijiMap()
 
 export default defineNuxtConfig({
   /*
@@ -219,9 +204,7 @@ export default defineNuxtConfig({
     },
     */
   },
-  /*
   generate: {
     routes,
   },
-  */
 });

@@ -87,6 +87,24 @@ const getKeywords = (keyword_: any) => {
   return keywords.filter(n => n !== "")
 }
 
+const convertItaiji = (keyword: any) => {
+  let keyword_ = keyword;
+  for (const key_ in itaiji) {
+    if(keyword.includes(key_)) {
+      keyword_ = keyword_.split(key_).join(itaiji[key_])
+    }
+  }
+  return keyword_
+}
+
+const convertItaijiArray = (keywords: any) => {
+  let keywords_ = []
+  for(let keyword of keywords) {
+    keywords_.push(convertItaiji(keyword))
+  }
+  return keywords_
+}
+
 const searchByFuse: any = async (query: any) => {
   const runtimeConfig = useRuntimeConfig();
 
@@ -131,7 +149,9 @@ const searchByFuse: any = async (query: any) => {
   const currentQuery = query;
 
   let keyword_ = currentQuery.keyword;
-  const keywords = getKeywords(keyword_)
+  let keywords = getKeywords(keyword_)
+  keywords = convertItaijiArray(keywords)
+
   if (keywords.length > 0) {
     const keywordQuery = [];
 
@@ -178,6 +198,9 @@ const searchByFuse: any = async (query: any) => {
       if (typeof value === "object") {
         value = value[0];
       }
+
+      value = convertItaiji(value)
+
       const field = key.replace("q-", "");
       if (value) {
         if(value.startsWith("-")) {
@@ -203,6 +226,9 @@ const searchByFuse: any = async (query: any) => {
       if (!Array.isArray(values)) {
         values = [values];
       }
+
+      values = convertItaijiArray(values)
+
       const field = key.replace("f-", "");
 
       const orQueries = [];

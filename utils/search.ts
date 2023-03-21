@@ -83,6 +83,61 @@ const getKeywordQueries = (route: any) => {
   return { queries, keywords };
 };
 
+// 入力された配列のすべての組み合わせを生成する関数
+function allCombinations(arrays: any[]): any[] {
+  const numberOfCombinations = arrays.reduce(
+    (res, array) => res * array.length,
+    1
+  );
+
+  const result: any = Array(numberOfCombinations)
+    .fill(0)
+    .map(() => []);
+
+  let repeatEachElement;
+
+  for (let i = 0; i < arrays.length; i++) {
+    const array = arrays[i];
+    repeatEachElement = repeatEachElement
+      ? repeatEachElement / array.length
+      : numberOfCombinations / array.length;
+
+    const everyElementRepeatedLength = repeatEachElement * array.length;
+
+    for (let j = 0; j < numberOfCombinations; j++) {
+      const index = Math.floor(
+        (j % everyElementRepeatedLength) / repeatEachElement
+      );
+      result[j][i] = array[index];
+    }
+  }
+
+  return result;
+}
+
+// 与えられた文字列の異体字を変換する関数
+const convertItaijiText = (text: string, itaiji: any): string[] => {
+  if (!text) return [];
+
+  const words = text.split("");
+
+  const words2 = words.map((word) => {
+    if (itaiji[word]) {
+      return itaiji[word];
+    } else {
+      return [word];
+    }
+  });
+
+  const keywordsWithSynonym: string[] = [];
+  const result = allCombinations(words2);
+  for (const v of result) {
+    keywordsWithSynonym.push(v.join(''));
+  }
+
+  return keywordsWithSynonym;
+}
+
 // 今後、要検討
 const highlight = (route:any, text: string, key: string, matches = null, itaiji = {}) => {
   if (!text) return text;
@@ -110,15 +165,7 @@ const highlight = (route:any, text: string, key: string, matches = null, itaiji 
   });
 
   for (let value of candidates) {
-    /*
-    // 否定語の場合は、2文字目から
-    // if (value.startsWith("-")) value = value.substring(1);
-    */
-
-    let values = [value]
-    if(itaiji[value]){
-      values = itaiji[value]
-    }
+    const values = convertItaijiText(value, itaiji)
 
     const regexp = new RegExp(values.join("|"), "gi");
     text = text.replace(regexp, function (match) {
@@ -128,5 +175,7 @@ const highlight = (route:any, text: string, key: string, matches = null, itaiji 
 
   return text;
 };
+
+
 
 export { $search, truncate, getTypedValues, highlight };

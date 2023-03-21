@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { hightlight } from "~/utils/search";
+// import { hightlight } from "~/utils/search";
 
 const route = useRoute();
 
