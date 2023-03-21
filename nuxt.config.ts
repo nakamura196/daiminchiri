@@ -4,7 +4,6 @@ import { $rs } from "./utils/resourcesync.js";
 import { createItaijiMap } from "./utils/itaiji.js";
 
 const environment = process.env.APP_MODE;
-console.log({environment})
 
 const type = "fuse";
 

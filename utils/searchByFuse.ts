@@ -1,5 +1,5 @@
 import Fuse from "fuse.js";
-import itaiji from '@/assets/json/itaiji.json'
+import itaiji from "@/assets/json/itaiji.json";
 
 const createAggs = (result: any, aggregations: any) => {
   const aggs: any = {};
@@ -77,38 +77,36 @@ let documents: any = null;
 let fuse: any = null;
 
 const getKeywords = (keyword_: any) => {
-  if(!keyword_) return [];
+  if (!keyword_) return [];
   if (typeof keyword_ !== "string") {
     keyword_ = keyword_.join(" ");
   }
 
-  const keywords: string[] = keyword_.split("　").join(" ").split(" ")
+  const keywords: string[] = keyword_.split("　").join(" ").split(" ");
 
-  return keywords.filter(n => n !== "")
-}
+  return keywords.filter((n) => n !== "");
+};
 
 const convertItaiji = (keyword: any) => {
   let keyword_ = keyword;
   for (const key_ in itaiji) {
-    if(keyword.includes(key_)) {
-      keyword_ = keyword_.split(key_).join(itaiji[key_])
+    if (keyword.includes(key_)) {
+      keyword_ = keyword_.split(key_).join(itaiji[key_]);
     }
   }
-  return keyword_
-}
+  return keyword_;
+};
 
 const convertItaijiArray = (keywords: any) => {
-  let keywords_ = []
-  for(let keyword of keywords) {
-    keywords_.push(convertItaiji(keyword))
+  let keywords_ = [];
+  for (let keyword of keywords) {
+    keywords_.push(convertItaiji(keyword));
   }
-  return keywords_
-}
+  return keywords_;
+};
 
 const searchByFuse: any = async (query: any) => {
   const runtimeConfig = useRuntimeConfig();
-
-  
 
   const options = {
     includeScore: true,
@@ -149,8 +147,8 @@ const searchByFuse: any = async (query: any) => {
   const currentQuery = query;
 
   let keyword_ = currentQuery.keyword;
-  let keywords = getKeywords(keyword_)
-  keywords = convertItaijiArray(keywords)
+  let keywords = getKeywords(keyword_);
+  keywords = convertItaijiArray(keywords);
 
   if (keywords.length > 0) {
     const keywordQuery = [];
@@ -162,18 +160,17 @@ const searchByFuse: any = async (query: any) => {
         key = key.name;
       }
 
-      const andQ = []
+      const andQ = [];
 
-      
-      for(const keyword of keywords) {
+      for (const keyword of keywords) {
         andQ.push({
-          [key]: `'"${keyword}"` 
-        })
+          [key]: `'"${keyword}"`,
+        });
       }
 
       keywordQuery.push({
-        $and: andQ
-      })
+        $and: andQ,
+      });
     }
 
     if (keywordQuery.length > 0) {
@@ -182,7 +179,6 @@ const searchByFuse: any = async (query: any) => {
       });
     }
   }
-  
 
   // 詳細検索
   for (const key in currentQuery) {
@@ -199,14 +195,14 @@ const searchByFuse: any = async (query: any) => {
         value = value[0];
       }
 
-      value = convertItaiji(value)
+      value = convertItaiji(value);
 
       const field = key.replace("q-", "");
       if (value) {
-        if(value.startsWith("-")) {
+        if (value.startsWith("-")) {
           qQueries.push({ [field]: `!"${value}"` }); // Items that do not include
-        } else if(value.includes("\"")){
-          const value_ = value.split("\"").join("");
+        } else if (value.includes('"')) {
+          const value_ = value.split('"').join("");
           qQueries.push({ [field]: `="${value_}"` }); // Items that include
         } else {
           qQueries.push({ [field]: `'"${value}"` }); // Items that include
@@ -227,7 +223,7 @@ const searchByFuse: any = async (query: any) => {
         values = [values];
       }
 
-      values = convertItaijiArray(values)
+      values = convertItaijiArray(values);
 
       const field = key.replace("f-", "");
 
@@ -240,12 +236,12 @@ const searchByFuse: any = async (query: any) => {
             hasMinus = true;
           }
 
-          if(value.startsWith("-")) {
+          if (value.startsWith("-")) {
             const value_ = value.substring(1);
 
             const notAndQueries = [];
-            notAndQueries.push({ [field]: `!^"${value_}"` });// Items that do not start with
-            notAndQueries.push({ [field]: `!"${value_}"$` });// Items that do not end with
+            notAndQueries.push({ [field]: `!^"${value_}"` }); // Items that do not start with
+            notAndQueries.push({ [field]: `!"${value_}"$` }); // Items that do not end with
             orQueries.push({ $or: notAndQueries }); // !
           } else {
             orQueries.push({ [field]: `="${value}"` });
@@ -268,7 +264,11 @@ const searchByFuse: any = async (query: any) => {
   if (searchQuery.$and.length === 0) {
     const search_all = runtimeConfig.public.search.fuse.search_all;
     if (search_all) {
-      result_ = documents;
+      const documents_ = [];
+      for (const document of documents) {
+        documents_.push(document.raw);
+      }
+      result_ = documents_;
     } else {
       result_ = []; // documents;
     }
@@ -385,7 +385,7 @@ const getDocuments = async () => {
     let documents: any = [];
     // const raw: any[] = []
 
-    const documents_ = []
+    const documents_ = [];
 
     for (const item of items) {
       const doc: any = {
@@ -408,11 +408,8 @@ const getDocuments = async () => {
 
           doc[key] = value;
         }
-
-
       }
 
-      
       /*
       
 
@@ -444,37 +441,36 @@ const getDocuments = async () => {
 
       */
 
-      const item_: any = {}
+      const item_: any = {};
 
       for (const key in doc) {
-        let values = doc[key]
-        if(typeof values !== "object") {
-          values = [values]
+        let values = doc[key];
+        if (typeof values !== "object") {
+          values = [values];
         }
-        
-        const values_ = []
-        for(let value of values) {
-          value = String(value)
+
+        const values_ = [];
+        for (let value of values) {
+          value = String(value);
           for (const key_ in itaiji) {
-            if(value.includes(key_)) {
-              value = value.split(key_).join(itaiji[key_])
+            if (value.includes(key_)) {
+              value = value.split(key_).join(itaiji[key_]);
             }
           }
-          values_.push(value)
+          values_.push(value);
         }
 
-        item_[key] = values_
+        item_[key] = values_;
       }
 
-      documents_.push(item_)
+      documents_.push(item_);
       documents.push(doc);
     }
 
     return {
       raw: documents,
       documents: documents_,
-    }
-
+    };
   } else {
     const url = appUrl + `/data/index.json`;
 
@@ -484,37 +480,39 @@ const getDocuments = async () => {
 
     // const raw = JSON.parse(JSON.stringify(data));
 
-    const documents_ = []
+    const documents_ = [];
 
-    for(const item of data) {
-      const item_: any = {}
-      for (const key in item) {
-        let values = item[key]
-        if(typeof values !== "object") {
-          values = [values]
+    for (const item of data) {
+      const item_cloned = JSON.parse(JSON.stringify(item));
+
+      const item_: any = {};
+      for (const key in item_cloned) {
+        let values = item_cloned[key];
+
+        if (typeof values !== "object") {
+          values = [values];
         }
-        
-        const values_ = []
-        for(let value of values) {
-          value = String(value)
+
+        const values_ = [];
+        for (let value of values) {
+          let valueString = String(value);
           for (const key_ in itaiji) {
-            if(value.includes(key_)) {
-              value = value.split(key_).join(itaiji[key_])
+            if (valueString.includes(key_)) {
+              valueString = valueString.split(key_).join(itaiji[key_]);
             }
           }
-          values_.push(value)
+          values_.push(valueString);
         }
 
-        item_[key] = values_
+        item_[key] = values_;
       }
 
-      item_.raw = item
+      item_.raw = item;
 
-      documents_.push(item_)
+      documents_.push(item_);
     }
 
-    return documents_
-
+    return documents_;
   }
 };
 
