@@ -1,0 +1,16 @@
+[
+    {
+        "label": "IIIFマニフェスト",
+        "description": "IIIFマニフェスト",
+        "extent": "JSON",
+        "download": "/iiif/main/manifest.json",
+        "viewer": "/mirador/?manifest=/iiif/main/manifest.json"
+    },
+    {
+        "label": "地名辞書",
+        "description": "地名をまとめて利用するためのデータセット",
+        "extent": "CSV",
+        "download": "/iiif/main/manifest.json",
+        "viewer": "/mirador/?manifest=/iiif/main/manifest.json"
+    }
+]

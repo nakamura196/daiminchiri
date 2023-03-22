@@ -244,8 +244,8 @@ export default {
         value: "地名補足",
       },
       {
-        title: "latitute",
-        value: "latitute",
+        title: "latitude",
+        value: "latitude",
       },
       {
         title: "longitude",

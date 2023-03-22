@@ -34,6 +34,13 @@ const menus = [
       "name": "map"
     },
     "description": "このサイトは、...。"
+  },
+  {
+    "label": "dataset",
+    "to": {
+      "name": "dataset"
+    },
+    "description": "このサイトは、...。"
   }
 ]
 </script>
@@ -44,7 +51,7 @@ const menus = [
             <div class="pa-4">
 
               <template v-if="menu.to">
-                <nuxt-link :to="localePath(menu.to)">{{ menu.label }}</nuxt-link>
+                <nuxt-link :to="localePath(menu.to)">{{ $t(menu.label) }}</nuxt-link>
               </template>
               <template v-else>
                 <a :href="menu.href" :target="menu.target">

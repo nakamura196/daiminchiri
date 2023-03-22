@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const {locale} = useI18n()
+const localePath = useLocalePath();
 const data = await queryContent(`/${locale.value}/`).findOne();
 </script>
 <template>

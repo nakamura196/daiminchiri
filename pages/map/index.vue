@@ -17,8 +17,8 @@ onMounted(async () => {
   const coordinates_ = [];
 
   for (const item of results.hits.hits) {
-    if (item.latitute) {
-      const coordinate = [item.latitute, item.longitude];
+    if (item.latitude) {
+      const coordinate = [item.latitude, item.longitude];
       coordinates_.push({
         id: item._id,
         label: item.label,
