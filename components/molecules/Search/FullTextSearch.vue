@@ -24,9 +24,8 @@ const trigger = (event: any) => {
 };
 
 const execSearch = () => {
-
-  const runtimeConfig = useRuntimeConfig()
-  const inherit_facet = runtimeConfig.public.inherit_facet
+  const runtimeConfig = useRuntimeConfig();
+  const inherit_facet = runtimeConfig.public.inherit_facet;
 
   const query = inherit_facet ? JSON.parse(JSON.stringify(route.query)) : {};
   query.page = 1;
@@ -63,8 +62,22 @@ watch(route, () => {
       ></v-text-field>
     </v-col>
     <v-col cols="12" sm="6">
-      <v-btn color="primary" flat @click="execSearch"
+      <v-btn color="primary" flat @click="execSearch" class="ma-1"
         ><v-icon>{{ mdiMagnify }}</v-icon> {{ $t("search") }}</v-btn
+      >
+      <v-btn
+      class="ma-1"
+      variant="text"
+      color="primary"
+        :to="
+          localePath({
+            name: 'resource-advanced',
+            params: { resource: 'item' },
+            query: route.query,
+          })
+        "
+      >
+        {{ $t("advanced") }}</v-btn
       >
     </v-col>
   </v-row>

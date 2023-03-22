@@ -49,9 +49,9 @@ export default {
   menu_mode: false,
   menus: [
     {
-      title: "top",
-      to: { name: "index" },
-      header: true,
+      title: "advanced",
+      to: { name: "resource-advanced", params: { resource: "item"  } },
+      // header: true,
     },
     {
       title: "search",

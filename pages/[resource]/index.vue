@@ -364,14 +364,14 @@ const hidePagination = computed(() => {
                       :length="length"
                     />
                   </v-col>
-                  <v-col cols="6" sm="2">
+                  <v-col cols="6" sm="1">
                     <!-- <SearchPerPage /> -->
                     <MoleculesSearchPerPage v-if="!hidePagination"
                       :items="itemsPerPage"
                       v-model="perPage"
                     ></MoleculesSearchPerPage>
                   </v-col>
-                  <v-col cols="6" sm="2">
+                  <v-col cols="6" sm="3">
                     <MoleculesSearchSelect v-if="!hidePagination"
                       v-model="sort"
                       :label="$t('sort_by')"
@@ -379,7 +379,7 @@ const hidePagination = computed(() => {
                     />
                   </v-col>
                 </template>
-                <v-col cols="6" md="2">
+                <v-col cols="6" sm="2">
                   <MoleculesSearchSelect
                     v-model="layout_"
                     :label="$t('layout')"

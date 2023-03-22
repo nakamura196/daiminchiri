@@ -10,13 +10,11 @@ const menus = [
       "params": {
         "slug": "about"
       }
-    },
-    "description": "このサイトは、...。"
+    }
   },
   {
     "label": "絵図を見る",
-    "href": "/mirador/?manifest=/iiif/main/manifest.json&annotationState=on",
-    "description": "このサイトは、...。"
+    "href": "/mirador/?manifest=/iiif/main/manifest.json&annotationState=on"
   },
   {
     "label": "検索",
@@ -25,8 +23,7 @@ const menus = [
       "params": {
         "resource": "item"
       }
-    },
-    "description": "このサイトは、...。"
+    }
   },
   {
     "label": "詳細検索",
@@ -35,22 +32,21 @@ const menus = [
       "params": {
         "resource": "item"
       }
-    },
-    "description": "このサイトは、...。"
+    }
   },
   {
     "label": "現代地図",
     "to": {
       "name": "map"
     },
-    "description": "このサイトは、...。"
+    "description": ""
   },
   {
     "label": "dataset",
     "to": {
       "name": "dataset"
     },
-    "description": "このサイトは、...。"
+    "description": ""
   }
 ]
 </script>
@@ -68,7 +64,7 @@ const menus = [
                   {{ menu.label }}
                 </a>
                 </template> 
-              <div class="mt-2">{{ menu.description }}</div>
+              <div class="mt-2" v-if="menu.description">{{ menu.description }}</div>
             </div>
           </v-card>
         </v-col>
