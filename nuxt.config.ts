@@ -107,7 +107,7 @@ export default defineNuxtConfig({
   */
   ssr: mode[modeKey].ssr,
   modules: [
-    // "@nuxt/content",
+    "@nuxt/content",
     "@nuxtjs/i18n",
     "nuxt-simple-sitemap",
     "nuxt-jsonld",
@@ -206,4 +206,7 @@ export default defineNuxtConfig({
   generate: {
     routes,
   },
+  experimental: {
+    inlineSSRStyles: false
+  }
 });

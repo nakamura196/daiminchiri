@@ -1,14 +1,12 @@
 
 <script setup lang="ts">
-import * as L from "leaflet";
-import "leaflet.markercluster/dist/leaflet.markercluster.js";
 import "leaflet/dist/leaflet.css";
 import "leaflet.markercluster/dist/MarkerCluster.css";
 import "leaflet.markercluster/dist/MarkerCluster.Default.css";
+
 import {
   LMap,
   LTileLayer,
-  LControlZoom,
   LControlLayers,
 } from "@vue-leaflet/vue-leaflet";
 
@@ -74,7 +72,6 @@ onMounted(() => {
     v-model:center="center_"
     :zoomAnimation="true"
     :markerZoomAnimation="true"
-    :useGlobalLeaflet="true"
   >
     <l-control-layers v-if="tileProviders.length > 1"/>
 

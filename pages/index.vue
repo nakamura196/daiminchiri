@@ -1,16 +1,18 @@
 <script setup lang="ts">
 const {locale} = useI18n()
-// const data = await queryContent(`/${locale.value}/`).findOne();
+const data = await queryContent(`/${locale.value}/`).findOne();
 </script>
 <template>
   <div>
     <MoleculesMenuTopImage></MoleculesMenuTopImage>
 
     <v-container>
-      <!-- <ContentRenderer :value="data" /> -->
+      <ContentRenderer :value="data" />
+
+      <MoleculesMenuTop class="my-5"></MoleculesMenuTop>
     </v-container>
 
-    <div class="bg-sub" v-if="false">
+    <div class="bg-sub">
       <v-container class="pa-10">
         <p class="mb-5">
           <b>{{ $t("News") }}</b>
