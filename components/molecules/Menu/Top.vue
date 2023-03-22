@@ -29,6 +29,16 @@ const menus = [
     "description": "このサイトは、...。"
   },
   {
+    "label": "詳細検索",
+    "to": {
+      "name": "resource-advanced",
+      "params": {
+        "resource": "item"
+      }
+    },
+    "description": "このサイトは、...。"
+  },
+  {
     "label": "現代地図",
     "to": {
       "name": "map"

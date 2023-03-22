@@ -127,7 +127,7 @@ const manifest =
       </v-container>
     </v-sheet>
 
-    <v-container class="text-center pt-10" v-if="item.updated">
+    <v-container class="text-center py-10" v-if="item.updated">
       <h4 class="mb-4">{{ $t("最終更新日") }}</h4>
       <p>{{ item.updated }}</p>
     </v-container>

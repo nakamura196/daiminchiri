@@ -23,7 +23,6 @@ const toTop = () => {
 };
 </script>
 <template>
-  <!-- v-scroll="onScroll" -->
   <v-btn
     v-show="fab"
     style="position: absolute; right: 16px; bottom: 16px"

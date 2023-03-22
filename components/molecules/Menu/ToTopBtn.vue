@@ -1,21 +1,14 @@
 <template>
   <v-layout-item
-    v-scroll="onScroll"
-    class="text-end"
-    model-value
     position="bottom"
-    size="88"
+    v-scroll="onScroll"
+    model-value
+    size="0"
+    class="text-end mb-16 pr-4"
   >
-    <div class="ma-4">
-      <v-fab-transition>
-        <v-btn
-          v-show="model"
-          color="error"
-          :icon="mdiArrowUp"
-          @click="onClick"
-        />
-      </v-fab-transition>
-    </div>
+    <v-fab-transition>
+      <v-btn v-show="model" color="error" :icon="mdiArrowUp" @click="onClick" />
+    </v-fab-transition>
   </v-layout-item>
 </template>
 

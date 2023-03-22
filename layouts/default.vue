@@ -2,12 +2,12 @@
   <LayoutsApp>
     <LayoutsHeader> </LayoutsHeader>
 
+    <MoleculesMenuToTopBtn />
+
     <v-main>
       <slot />
     </v-main>
 
     <LayoutsFooter></LayoutsFooter>
-
-    <MoleculesMenuToTopBtn3 />
   </LayoutsApp>
 </template>

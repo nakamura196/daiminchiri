@@ -305,7 +305,7 @@ const hidePagination = computed(() => {
 
         <LayoutsFooter />
 
-        <MoleculesMenuToTopBtn3 />
+        <MoleculesMenuToTopBtn />
       </template>
       <template v-else>
         <v-row class="pa-0 ma-0">
@@ -408,7 +408,7 @@ const hidePagination = computed(() => {
             <!-- Footer -->
             <LayoutsFooter />
 
-            <MoleculesMenuToTopBtn2 id="main" />
+            <MoleculesMenuToTopBtnSearch id="main" />
           </v-col>
         </v-row>
       </template>

@@ -36,21 +36,21 @@ const bh = [
       </thead>
       <tbody>
         <tr v-for="row in item.body">
-          <td>
+          <td width="20%">
             {{ row.label }}
           </td>
-          <td>
+          <td width="20%">
             {{ row.description }}
           </td>
-          <td>
+          <td width="20%">
             {{ row.extent }}
           </td>
-          <td>
+          <td width="20%">
             <a :href="row.download">
               {{ row.download }}
             </a>
           </td>
-          <td>
+          <td width="20%">
             <a :href="row.viewer">
               {{ row.viewer }}
             </a>

@@ -24,14 +24,15 @@ onMounted(async () => {
         label: item.label,
         c: coordinate,
         to: localePath({
-            name: "resource-id",
-            params: { 
-                resource: 'item',
-                id: item._id },
-        })
+          name: "resource-id",
+          params: {
+            resource: "item",
+            id: item._id,
+          },
+        }),
       });
 
-      if (coordinates_.length > 10000/* > 200*/) {
+      if (coordinates_.length > 10000 /* > 200*/) {
         break;
       }
     }
@@ -40,19 +41,42 @@ onMounted(async () => {
   coordinates.value = coordinates_;
 });
 
+const { t } = useI18n();
+
+const item = {
+  title: "map",
+};
+
 const tileProviders = [
-    {
-      name: "国土地理院ウェブサイト",
-      attribution:
-        '国土地理院ウェブサイト',
-      url: "https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png",
-    },
-  ]
+  {
+    name: "国土地理院ウェブサイト",
+    attribution: "国土地理院ウェブサイト",
+    url: "https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png",
+  },
+];
+
+const bh = [
+  {
+    title: t("top"),
+    disabled: false,
+    to: localePath({ name: "index" }),
+  },
+  {
+    title: item.title,
+    disabled: false,
+  },
+];
 </script>
 <template>
-  <div style="height: 100%; width: 100%">
-    <ClientOnly>
-        <MoleculesMapCluster :zoom="zoom" :center="center" :coordinates="coordinates"></MoleculesMapCluster>
-    </ClientOnly>
-  </div>
+  <LayoutsCommon :title="item.title" :items="bh">
+    <div style="height: 600px; width: 100%">
+      <ClientOnly>
+        <MoleculesMapCluster
+          :zoom="zoom"
+          :center="center"
+          :coordinates="coordinates"
+        ></MoleculesMapCluster>
+      </ClientOnly>
+    </div>
+  </LayoutsCommon>
 </template>
