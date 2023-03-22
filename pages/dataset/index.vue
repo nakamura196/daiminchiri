@@ -4,7 +4,29 @@ const { locale } = useI18n();
 
 const { t } = useI18n();
 
-const item = await queryContent(`/${locale.value}/page/` + "dataset").findOne();
+// const item = await queryContent(`/${locale.value}/page/` + "dataset").findOne();
+
+const item = {
+  title: "dataset",
+  "body": [
+    {
+        "label": "地名辞書",
+        "description": "地名をまとめて利用するためのデータセット",
+        "extent": "CSV",
+        "download": "/data/index.csv",
+        "_viewer": "/mirador/?manifest=/iiif/main/manifest.json",
+        "_": [
+            {
+                "label": "アノテーション",
+                "description": "IIIFマニフェスト",
+                "extent": "JSON",
+                "download": "/iiif/main/manifest.json",
+                "viewer": "/mirador/?manifest=/iiif/main/manifest.json"
+            }
+        ]
+    }
+  ]
+}
 
 const localePath = useLocalePath();
 
@@ -15,7 +37,7 @@ const bh = [
     to: localePath({ name: "index" }),
   },
   {
-    title: item.title,
+    title: t(item.title),
     disabled: false,
   },
 ];

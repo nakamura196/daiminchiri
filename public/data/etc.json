@@ -1,0 +1,582 @@
+{
+  "区域2": {
+    "北直隸": [
+      {
+        "label": "順天府",
+        "value": 78
+      },
+      {
+        "label": "保定府",
+        "value": 59
+      },
+      {
+        "label": "真定府",
+        "value": 50
+      },
+      {
+        "label": "大名府",
+        "value": 33
+      },
+      {
+        "label": "河間府",
+        "value": 24
+      },
+      {
+        "label": "廣平府",
+        "value": 22
+      },
+      {
+        "label": "永平府",
+        "value": 21
+      },
+      {
+        "label": "順德府",
+        "value": 21
+      }
+    ],
+    "朝鮮國": [
+      {
+        "label": "忠清道",
+        "value": 9
+      },
+      {
+        "label": "慶尚道",
+        "value": 7
+      },
+      {
+        "label": "咸鏡道",
+        "value": 6
+      },
+      {
+        "label": "平安道",
+        "value": 5
+      },
+      {
+        "label": "江源道",
+        "value": 4
+      },
+      {
+        "label": "京畿道",
+        "value": 4
+      },
+      {
+        "label": "全羅道",
+        "value": 3
+      },
+      {
+        "label": "黃海道",
+        "value": 2
+      }
+    ],
+    "山東道": [
+      {
+        "label": "兗州府",
+        "value": 83
+      },
+      {
+        "label": "濟南府",
+        "value": 56
+      },
+      {
+        "label": "青州府",
+        "value": 44
+      },
+      {
+        "label": "登州府",
+        "value": 34
+      },
+      {
+        "label": "東昌府",
+        "value": 33
+      },
+      {
+        "label": "萊州府",
+        "value": 29
+      }
+    ],
+    "南直隸": [
+      {
+        "label": "鳳陽府",
+        "value": 58
+      },
+      {
+        "label": "淮安府",
+        "value": 43
+      },
+      {
+        "label": "應天府",
+        "value": 33
+      },
+      {
+        "label": "廬州府",
+        "value": 30
+      },
+      {
+        "label": "蘇州府",
+        "value": 28
+      },
+      {
+        "label": "揚州府",
+        "value": 24
+      },
+      {
+        "label": "安慶府",
+        "value": 22
+      },
+      {
+        "label": "鎮江府",
+        "value": 20
+      },
+      {
+        "label": "徽州府",
+        "value": 18
+      },
+      {
+        "label": "池州府",
+        "value": 17
+      },
+      {
+        "label": "太平府",
+        "value": 16
+      },
+      {
+        "label": "徐州",
+        "value": 15
+      },
+      {
+        "label": "寧國府",
+        "value": 15
+      },
+      {
+        "label": "常州府",
+        "value": 14
+      },
+      {
+        "label": "松江府",
+        "value": 13
+      },
+      {
+        "label": "滁州",
+        "value": 11
+      },
+      {
+        "label": "和州",
+        "value": 8
+      },
+      {
+        "label": "廣德州",
+        "value": 7
+      }
+    ],
+    "日本國": [
+      {
+        "label": "西海道",
+        "value": 6
+      },
+      {
+        "label": "東山道",
+        "value": 2
+      },
+      {
+        "label": "東海道",
+        "value": 2
+      },
+      {
+        "label": "畿内",
+        "value": 2
+      },
+      {
+        "label": "北陸道",
+        "value": 1
+      },
+      {
+        "label": "山陰道",
+        "value": 1
+      },
+      {
+        "label": "山陽道",
+        "value": 1
+      },
+      {
+        "label": "五嶌",
+        "value": 1
+      },
+      {
+        "label": "南海道",
+        "value": 1
+      }
+    ],
+    "浙江道": [
+      {
+        "label": "寧波府",
+        "value": 32
+      },
+      {
+        "label": "台州府",
+        "value": 31
+      },
+      {
+        "label": "嘉興府",
+        "value": 30
+      },
+      {
+        "label": "杭州府",
+        "value": 28
+      },
+      {
+        "label": "紹興府",
+        "value": 25
+      },
+      {
+        "label": "湖州府",
+        "value": 24
+      },
+      {
+        "label": "處州府",
+        "value": 20
+      },
+      {
+        "label": "温州府",
+        "value": 20
+      },
+      {
+        "label": "嚴州府",
+        "value": 19
+      },
+      {
+        "label": "金華府",
+        "value": 12
+      },
+      {
+        "label": "衢州府",
+        "value": 10
+      }
+    ],
+    "山西道": [
+      {
+        "label": "平陽府",
+        "value": 89
+      },
+      {
+        "label": "太原府",
+        "value": 66
+      },
+      {
+        "label": "大同府",
+        "value": 49
+      },
+      {
+        "label": "潞安府",
+        "value": 21
+      },
+      {
+        "label": "懷慶府",
+        "value": 18
+      },
+      {
+        "label": "澤州",
+        "value": 17
+      },
+      {
+        "label": "汾州",
+        "value": 14
+      },
+      {
+        "label": "遼州",
+        "value": 12
+      },
+      {
+        "label": "沁州",
+        "value": 9
+      }
+    ],
+    "河南道": [
+      {
+        "label": "開封府",
+        "value": 72
+      },
+      {
+        "label": "河南府",
+        "value": 62
+      },
+      {
+        "label": "汝寧府",
+        "value": 42
+      },
+      {
+        "label": "南陽府",
+        "value": 36
+      },
+      {
+        "label": "歸德府",
+        "value": 28
+      },
+      {
+        "label": "衛輝府",
+        "value": 19
+      },
+      {
+        "label": "彰德府",
+        "value": 14
+      },
+      {
+        "label": "汝州",
+        "value": 12
+      }
+    ],
+    "湖廣道": [
+      {
+        "label": "荊州府",
+        "value": 46
+      },
+      {
+        "label": "長沙府",
+        "value": 36
+      },
+      {
+        "label": "黃州府",
+        "value": 32
+      },
+      {
+        "label": "襄陽府",
+        "value": 31
+      },
+      {
+        "label": "武昌府",
+        "value": 30
+      },
+      {
+        "label": "岳州府",
+        "value": 29
+      },
+      {
+        "label": "衡州府",
+        "value": 27
+      },
+      {
+        "label": "永州府",
+        "value": 23
+      },
+      {
+        "label": "郴州府",
+        "value": 21
+      },
+      {
+        "label": "德安府",
+        "value": 20
+      },
+      {
+        "label": "辰州府",
+        "value": 19
+      },
+      {
+        "label": "常德府",
+        "value": 17
+      },
+      {
+        "label": "承天府",
+        "value": 16
+      },
+      {
+        "label": "鄖陽府",
+        "value": 13
+      },
+      {
+        "label": "寶慶府",
+        "value": 12
+      },
+      {
+        "label": "漢陽府",
+        "value": 11
+      },
+      {
+        "label": "永順衛",
+        "value": 10
+      },
+      {
+        "label": "靖州",
+        "value": 8
+      }
+    ],
+    "江西道": [
+      {
+        "label": "建昌府",
+        "value": 28
+      },
+      {
+        "label": "九江府",
+        "value": 26
+      },
+      {
+        "label": "南康府",
+        "value": 24
+      },
+      {
+        "label": "贛州府",
+        "value": 22
+      },
+      {
+        "label": "饒州府",
+        "value": 21
+      },
+      {
+        "label": "南昌府",
+        "value": 21
+      },
+      {
+        "label": "吉安府",
+        "value": 21
+      },
+      {
+        "label": "廣信府",
+        "value": 20
+      },
+      {
+        "label": "南安府",
+        "value": 17
+      },
+      {
+        "label": "撫州府",
+        "value": 15
+      },
+      {
+        "label": "瑞州府",
+        "value": 9
+      },
+      {
+        "label": "袁州府",
+        "value": 9
+      }
+    ],
+    "福建道": [
+      {
+        "label": "福州府",
+        "value": 36
+      },
+      {
+        "label": "建寧府",
+        "value": 33
+      },
+      {
+        "label": "泉州府",
+        "value": 29
+      },
+      {
+        "label": "漳州府",
+        "value": 26
+      },
+      {
+        "label": "延平府",
+        "value": 19
+      },
+      {
+        "label": "汀州府",
+        "value": 19
+      },
+      {
+        "label": "邵武府",
+        "value": 11
+      },
+      {
+        "label": "興化府",
+        "value": 8
+      }
+    ],
+    "陝西道": [
+      {
+        "label": "西安府",
+        "value": 89
+      },
+      {
+        "label": "北衛",
+        "value": 64
+      },
+      {
+        "label": "鞏昌府",
+        "value": 42
+      },
+      {
+        "label": "漢中府",
+        "value": 42
+      },
+      {
+        "label": "洮州府",
+        "value": 42
+      },
+      {
+        "label": "延安府",
+        "value": 32
+      },
+      {
+        "label": "鳳翔府",
+        "value": 31
+      },
+      {
+        "label": "慶陽府",
+        "value": 26
+      },
+      {
+        "label": "平涼府",
+        "value": 26
+      },
+      {
+        "label": "沙州",
+        "value": 7
+      }
+    ],
+    "廣東道": [
+      {
+        "label": "廣州府",
+        "value": 65
+      },
+      {
+        "label": "潮州府",
+        "value": 29
+      },
+      {
+        "label": "惠州府",
+        "value": 24
+      },
+      {
+        "label": "肇慶府",
+        "value": 19
+      },
+      {
+        "label": "高州府",
+        "value": 19
+      },
+      {
+        "label": "韶州府",
+        "value": 18
+      },
+      {
+        "label": "雷州府",
+        "value": 16
+      },
+      {
+        "label": "廉州府",
+        "value": 14
+      },
+      {
+        "label": "南雄府",
+        "value": 9
+      },
+      {
+        "label": "瓊州",
+        "value": 4
+      },
+      {
+        "label": "萬州",
+        "value": 1
+      },
+      {
+        "label": "儋州",
+        "value": 1
+      },
+      {
+        "label": "崖州",
+        "value": 1
+      }
+    ]
+  }
+}

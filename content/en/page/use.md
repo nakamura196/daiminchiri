@@ -1,5 +1,5 @@
 ---
-title: About Us
+title: License
 ---
 
-aaa
+license

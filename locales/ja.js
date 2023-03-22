@@ -105,5 +105,12 @@ export default {
     "区域色": "区域色",
     "区域番号": "区域番号",
     "図符等": "図符等",
-    "advanced": "詳細検索"
+    "advanced": "詳細検索",
+    "dataset": "データセット",
+    "name": "名前",
+    "description": "内容記述",
+    "format": "フォーマット",
+    "download": "ダウンロード",
+    "viewer": "ビューア",
+    "size": "サイズ"
 }

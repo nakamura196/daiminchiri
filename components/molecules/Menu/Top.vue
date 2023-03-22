@@ -4,7 +4,7 @@ const localePath = useLocalePath();
 
 const menus = [
   {
-    "label": "このサイトについて",
+    "label": "about",
     "to": {
       "name": "page-slug",
       "params": {
@@ -17,7 +17,7 @@ const menus = [
     "href": "/mirador/?manifest=/iiif/main/manifest.json&annotationState=on"
   },
   {
-    "label": "検索",
+    "label": "search",
     "to": {
       "name": "resource",
       "params": {
@@ -26,7 +26,7 @@ const menus = [
     }
   },
   {
-    "label": "詳細検索",
+    "label": "advanced",
     "to": {
       "name": "resource-advanced",
       "params": {
@@ -35,7 +35,7 @@ const menus = [
     }
   },
   {
-    "label": "現代地図",
+    "label": "map",
     "to": {
       "name": "map"
     },

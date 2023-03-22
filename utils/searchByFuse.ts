@@ -478,9 +478,9 @@ const getDocuments = async () => {
 
     const data = await res.json();
 
-    // const raw = JSON.parse(JSON.stringify(data));
-
     const documents_ = [];
+
+    const converted: any = {}
 
     for (const item of data) {
       const item_cloned = JSON.parse(JSON.stringify(item));
@@ -496,11 +496,21 @@ const getDocuments = async () => {
         const values_ = [];
         for (let value of values) {
           let valueString = String(value);
-          for (const key_ in itaiji) {
-            if (valueString.includes(key_)) {
-              valueString = valueString.split(key_).join(itaiji[key_]);
+
+          if(converted[valueString]) {
+            valueString = converted[valueString]
+          } else {
+            const set = new Set(valueString.split(""));
+            const spl =  [...set];
+            for (const key_ of spl) {
+              if (itaiji[key_]) {
+                valueString = valueString.split(key_).join(itaiji[key_]);
+              }
             }
+
+            converted[String(value)] = valueString
           }
+
           values_.push(valueString);
         }
 

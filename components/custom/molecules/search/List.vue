@@ -58,7 +58,7 @@ const itaiji = publicRuntimeConfig.itaiji;
             </nuxt-link>
           </h4>
 
-          <div>
+          <div class="mb-4">
             <span v-for="key in keys">
               <template v-if="item[key.value]">
                 <span>{{ key.title }}</span

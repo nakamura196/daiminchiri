@@ -245,11 +245,12 @@ const hidePagination = computed(() => {
               :length="length"
             />
 
-            <MoleculesSearchPerPage
+            <MoleculesSearchSelect
               class="mt-4"
-              :items="itemsPerPage"
               v-model="perPage"
-            ></MoleculesSearchPerPage>
+              :label="$t('size')"
+              :items="itemsPerPage"
+            />
 
             <MoleculesSearchSelect
               class="mt-4"
@@ -366,10 +367,12 @@ const hidePagination = computed(() => {
                   </v-col>
                   <v-col cols="6" sm="1">
                     <!-- <SearchPerPage /> -->
-                    <MoleculesSearchPerPage v-if="!hidePagination"
-                      :items="itemsPerPage"
-                      v-model="perPage"
-                    ></MoleculesSearchPerPage>
+
+                    <MoleculesSearchSelect v-if="!hidePagination"
+              v-model="perPage"
+              :label="$t('size')"
+              :items="itemsPerPage"
+            />
                   </v-col>
                   <v-col cols="6" sm="3">
                     <MoleculesSearchSelect v-if="!hidePagination"

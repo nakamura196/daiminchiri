@@ -1,7 +1,7 @@
 export default {
     "all": "All",
     "menu": "Menu",
-    "about": "About Us",
+    "about": "About",
     "update": "Update",
     "cancel": "Cancel",
     "clear": "Clear",
@@ -105,5 +105,12 @@ export default {
     "区域色": "区域色",
     "区域番号": "区域番号",
     "図符等": "図符等",
-    "advanced": "Advanced"
+    "advanced": "Advanced",
+    "dataset": "Dataset",
+    "name": "Name",
+    "description": "Description",
+    "format": "Format",
+    "download": "Download",
+    "viewer": "Viewer",
+    "size": "Size"
 }
