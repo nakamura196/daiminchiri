@@ -2,7 +2,7 @@
 import { useDisplay } from "vuetify";
 import { OsdCustomViewer } from "@nakamura196/osd-custom-viewer";
 import "@nakamura196/osd-custom-viewer/dist/style.css";
-import { mdiMagnify, mdiSelectSearch } from "@mdi/js";
+import { mdiEye, mdiEyeOff, mdiMagnify, mdiSelectSearch } from "@mdi/js";
 import { mdiHome, mdiMinusCircleOutline, mdiPlusCircleOutline } from "@mdi/js";
 import { $search } from "~/utils/search";
 
@@ -19,7 +19,7 @@ const page = ref<number>(1);
 const fit_id = ref("");
 
 const manifest =
-  "https://gist.githubusercontent.com/nakamura196/91c2aab79528ee285270178aee0a7593/raw/cee7289eaaf7b6a623fcb1ffe2db6c8e833680f9/manifest.json";
+  "/iiif/main/manifest.json";
 
 interface PropType {
   items: any[];
@@ -38,7 +38,7 @@ const reload = async () => {
   const route = useRoute();
 
   const queryAll = JSON.parse(JSON.stringify(route.query));
-  queryAll.size = 500;
+  queryAll.size = 1000;
 
   const results = await $search(queryAll, "fuse");
 
@@ -130,6 +130,8 @@ const updatedSeletecd = (e: any) => {
 
 const publicRuntimeConfig = useRuntimeConfig().public;
 const keys: any[] = publicRuntimeConfig.default.keys;
+
+const show_all = ref(true)
 </script>
 <template>
   <v-row dense>
@@ -257,6 +259,10 @@ const keys: any[] = publicRuntimeConfig.default.keys;
 
         <span style="vertical-align: middle"> | </span>
 
+        <v-btn @click="show_all = !show_all" size="x-small" icon variant="text">
+          <v-icon>{{ show_all ? mdiEyeOff : mdiEye }}</v-icon>
+        </v-btn>
+
         <v-btn
           :href="`${manifest}?manifest=${manifest}`"
           target="_blank"
@@ -270,6 +276,8 @@ const keys: any[] = publicRuntimeConfig.default.keys;
             src="https://cultural.jp/img/icons/iiif-logo.svg"
           ></v-img>
         </v-btn>
+
+        
       </div>
 
       <!--
@@ -285,7 +293,7 @@ const keys: any[] = publicRuntimeConfig.default.keys;
         :show_all="true"
       ></OsdCustomViewer>
       -->
-      <MoleculesOsd2
+      <MoleculesOsd3
         v-if="targetIdMap"
         ref="ocv"
         :id="id"
@@ -294,8 +302,8 @@ const keys: any[] = publicRuntimeConfig.default.keys;
         :use_custom_buttons="true"
         :regions="regions"
         :fit_id="fit_id"
-        :show_all="true"
-      ></MoleculesOsd2>
+        :show_all="show_all"
+      ></MoleculesOsd3>
     </v-col>
   </v-row>
 </template>
