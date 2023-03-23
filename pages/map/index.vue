@@ -62,7 +62,7 @@ const bh = [
     to: localePath({ name: "index" }),
   },
   {
-    title: item.title,
+    title: t(item.title),
     disabled: false,
   },
 ];
