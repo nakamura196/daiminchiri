@@ -21,8 +21,8 @@ const itaiji = publicRuntimeConfig.itaiji;
 </script>
 <template>
   <v-card variant="outlined" v-for="item in items" :key="item.id" class="mb-4">
-    <div>
-      <v-row>
+    
+      <v-row dense>
         <v-col cols="12" sm="3">
           <nuxt-link
             :to="
@@ -41,7 +41,7 @@ const itaiji = publicRuntimeConfig.itaiji;
             ></v-img>
           </nuxt-link>
         </v-col>
-        <v-col cols="12" sm="9">
+        <v-col cols="12" sm="9" class="px-4">
           <h4>
             <nuxt-link
               :to="
@@ -73,6 +73,5 @@ const itaiji = publicRuntimeConfig.itaiji;
           </div>
         </v-col>
       </v-row>
-    </div>
   </v-card>
 </template>

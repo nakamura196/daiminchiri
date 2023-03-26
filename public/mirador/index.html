@@ -22,6 +22,15 @@
       );
     </script>
     <script type="text/javascript">
+
+      function isSmartPhone() {
+        if (navigator.userAgent.match(/iPhone|Android.+Mobile/)) {
+          return true;
+        } else {
+          return false;
+        }
+      }
+
       var vars = {};
       var param = location.search.substring(1).split("&");
       for (var i = 0; i < param.length; i++) {
@@ -45,13 +54,15 @@
             obj["canvasId"] = vars["canvas"];
           }
           obj["manifestId"] = manifest;
-          obj["thumbnailNavigationPosition"] = "far-right";
+          if(!isSmartPhone()) {
+            obj["thumbnailNavigationPosition"] = "far-right";
+          }
           windows.push(obj);
         }
       }
 
       var windowSettings = {}
-      if(vars["annotationState"]){
+      if(vars["annotationState"] && !isSmartPhone()){
         windowSettings = {
           highlightAllAnnotations : true,
           sideBarOpen : true,
