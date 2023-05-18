@@ -11,7 +11,7 @@
       },
       {
         "label": "真定府",
-        "value": 50
+        "value": 45
       },
       {
         "label": "大名府",
@@ -19,11 +19,7 @@
       },
       {
         "label": "河間府",
-        "value": 24
-      },
-      {
-        "label": "廣平府",
-        "value": 22
+        "value": 29
       },
       {
         "label": "永平府",
@@ -32,12 +28,16 @@
       {
         "label": "順德府",
         "value": 21
+      },
+      {
+        "label": "廣平府",
+        "value": 20
       }
     ],
     "朝鮮國": [
       {
         "label": "忠清道",
-        "value": 9
+        "value": 8
       },
       {
         "label": "慶尚道",
@@ -75,7 +75,7 @@
       },
       {
         "label": "濟南府",
-        "value": 56
+        "value": 58
       },
       {
         "label": "青州府",
@@ -144,12 +144,12 @@
         "value": 15
       },
       {
-        "label": "寧國府",
+        "label": "常州府",
         "value": 15
       },
       {
-        "label": "常州府",
-        "value": 14
+        "label": "寧國府",
+        "value": 15
       },
       {
         "label": "松江府",
@@ -157,7 +157,7 @@
       },
       {
         "label": "滁州",
-        "value": 11
+        "value": 10
       },
       {
         "label": "和州",
@@ -213,7 +213,7 @@
       },
       {
         "label": "台州府",
-        "value": 31
+        "value": 32
       },
       {
         "label": "嘉興府",
@@ -342,11 +342,11 @@
         "value": 31
       },
       {
-        "label": "武昌府",
+        "label": "岳州府",
         "value": 30
       },
       {
-        "label": "岳州府",
+        "label": "武昌府",
         "value": 29
       },
       {
@@ -433,7 +433,7 @@
       },
       {
         "label": "南安府",
-        "value": 17
+        "value": 16
       },
       {
         "label": "撫州府",
@@ -505,18 +505,18 @@
       },
       {
         "label": "延安府",
-        "value": 32
+        "value": 31
       },
       {
         "label": "鳳翔府",
         "value": 31
       },
       {
-        "label": "慶陽府",
-        "value": 26
+        "label": "平涼府",
+        "value": 27
       },
       {
-        "label": "平涼府",
+        "label": "慶陽府",
         "value": 26
       },
       {
@@ -538,16 +538,16 @@
         "value": 24
       },
       {
+        "label": "韶州府",
+        "value": 20
+      },
+      {
         "label": "肇慶府",
         "value": 19
       },
       {
         "label": "高州府",
         "value": 19
-      },
-      {
-        "label": "韶州府",
-        "value": 18
       },
       {
         "label": "雷州府",
@@ -559,7 +559,7 @@
       },
       {
         "label": "南雄府",
-        "value": 9
+        "value": 8
       },
       {
         "label": "瓊州",

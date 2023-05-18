@@ -3,7 +3,7 @@ import itaiji from "@/assets/json/itaiji.json";
 
 const createAggs = (result: any, aggregations: any) => {
   const aggs: any = {};
-  const fields = aggregations; // $config.default.aggregations;
+  const fields = aggregations; // $config.public.default.aggregations;
   for (const item of result) {
     for (const field_i of fields) {
       const field = field_i.key;
@@ -110,7 +110,7 @@ const searchByFuse: any = async (query: any) => {
 
   const options = {
     includeScore: true,
-    keys: runtimeConfig.default.searchKeys,
+    keys: runtimeConfig.public.default.searchKeys,
     //includeMatches: true,
     threshold: 0,
     useExtendedSearch: true,

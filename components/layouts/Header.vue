@@ -17,7 +17,7 @@ interface PropType {
 const { theme } = useSettings();
 
 const runtimeConfig = useRuntimeConfig();
-const appUrl = runtimeConfig.appUrl;
+const appUrl = runtimeConfig.public.appUrl;
 
 watch(theme, () => {
   localStorage.setItem(`${appUrl}-theme`, theme.value);
@@ -29,9 +29,9 @@ withDefaults(defineProps<PropType>(), {
 });
 */
 
-const menus = runtimeConfig.menus 
+const menus = runtimeConfig.public.menus 
 
-const menus_: Menu[] = menus /*[]*/ // runtimeConfig.menus 
+const menus_: Menu[] = menus /*[]*/ // runtimeConfig.public.menus 
 /*[
   {
     title: "top",
@@ -76,7 +76,7 @@ const isMobile = computed(() => {
     
     <v-toolbar-title>
       <nuxt-link :to="localePath({name: 'index'})" style="text-decoration: none; color: inherit"
-        >{{ $t($config.title) }}
+        >{{ $t($config.public.title) }}
       </nuxt-link>
     </v-toolbar-title>
 

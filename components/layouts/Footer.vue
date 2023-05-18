@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const runtimeConfig = useRuntimeConfig();
-const {ja, en} = runtimeConfig.footer;
+const {ja, en} = runtimeConfig.public.footer;
 
 const html: any = {
   ja,

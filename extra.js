@@ -28,8 +28,8 @@ export default {
       mode: "server",
     },
     prod: {
-      hostname: "https://map-app-daimin.vercel.app",
-      baseUrl: "/collection/digitalgallery/glossary",
+      hostname: "https://nakamura196.github.io/map-app-daimin",
+      baseUrl: "/map-app-daimin",
       mode: "server",
     },
   },

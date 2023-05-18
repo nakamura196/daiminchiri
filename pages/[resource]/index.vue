@@ -31,17 +31,17 @@ const loading = ref(true);
 const { $config } = useNuxtApp();
 
 const defaultPage = 1;
-const defaultSize = $config.default.defaultPerPage;
-const defaultSort = $config.default.defaultSort;
-const defaultLayout = $config.default.defaultLayout;
+const defaultSize = $config.public.default.defaultPerPage;
+const defaultSort = $config.public.default.defaultSort;
+const defaultLayout = $config.public.default.defaultLayout;
 
-const itemsPerPage = $config.default.perPageItems;
+const itemsPerPage = $config.public.default.perPageItems;
 
-const aggregationConfig = $config.default.aggregations;
+const aggregationConfig = $config.public.default.aggregations;
 
 const itemsSort: any[] = [];
 
-const sorts = $config.default.sorts;
+const sorts = $config.public.default.sorts;
 for (const option of sorts) {
   const key = option.key;
   for (const sortValue of ["asc", "desc"]) {
@@ -55,7 +55,7 @@ for (const option of sorts) {
   }
 }
 
-const layouts_ = $config.default.layouts;
+const layouts_ = $config.public.default.layouts;
 const itemsLayout: any[] = [];
 for (const option of layouts_) {
   itemsLayout.push({
@@ -312,7 +312,7 @@ const hidePagination = computed(() => {
         <v-row class="pa-0 ma-0">
           <v-col
             v-if="isFacetOpen"
-            :cols="$config.colSearch"
+            :cols="$config.public.colSearch"
             :style="'height: ' + (height - barHeight) + 'px'"
             class="overflow-y-auto pa-4"
           >
@@ -323,7 +323,7 @@ const hidePagination = computed(() => {
           </v-col>
           <v-col
             v-if="/*isFacetOpen*/ true"
-            :cols="isFacetOpen ? 12 - $config.colSearch : 12"
+            :cols="isFacetOpen ? 12 - $config.public.colSearch : 12"
             :style="'height: ' + (height - barHeight) + 'px'"
             class="overflow-y-auto pa-0"
             id="main"

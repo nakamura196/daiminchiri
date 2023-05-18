@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useI18n } from "vue-i18n";
+const nuxtApp = useNuxtApp();
 
 const route = useRoute();
 
@@ -7,11 +8,12 @@ const localePath = useLocalePath();
 
 const { t } = useI18n();
 
-const id = route.params.id;
+const id = String(route.params.id);
 
 const label = ref(""); // item.label || "ラベルなし";
 
-const item = ref(null);
+// const item = ref(null);
+let item: any = null
 
 const runtimeConfig = useRuntimeConfig();
 const appUrl = runtimeConfig.public.appUrl;
@@ -20,6 +22,37 @@ const isServer = runtimeConfig.public.mode === "server"
 
 const index_compressed = runtimeConfig.public.index_compressed;
 
+if (process.server && nuxtApp.payload.data[id]) {
+  // console.log("a")
+  item = nuxtApp.payload.data[id];
+  // console.log({id, item})
+} else {
+  // console.log("b")
+  /*
+  const runtimeConfig = useRuntimeConfig();
+
+  const url = runtimeConfig.public.url;
+
+  const route = useRoute();
+  const id = String(route.params.id);
+
+  const { data: data_ } = await useFetch(url, { key: id });
+
+  const data: any = data_.value;
+
+  const appConfig = useAppConfig();
+  const sheetName = appConfig.sheets.spots;
+
+  if (Array.isArray(data)) {
+    const items = data.find((item: any) => item.sheetName === sheetName).items;
+    item = items.find((item: any) => item.id === id);
+  } else {
+    item = data;
+  }
+  */
+}
+
+/*
 if (isServer) {
   const url = `/api/items/${id}`;
   const { data }: any = await useFetch(url);
@@ -95,6 +128,7 @@ if (isServer) {
     item.value = item_;
   });
 }
+*/
 
 const resource = String(route.params.resource);
 

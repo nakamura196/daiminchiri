@@ -1,5 +1,1 @@
-pandas
-openpyxl
-tqdm
-argparse
-python-dotenv
+daimin_data

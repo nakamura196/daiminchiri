@@ -13,7 +13,7 @@ if (type === "fuse") {
   routes.push(`/item/`);
   routes.push(`/en/item/`);
 
-  if (environment === "production") {
+  if (environment === "production2") {
     // const index_path = "./server/data/index.json";
     const index_path = "./public/data/ids.json";
     let rawdata_ = fs.readFileSync(index_path);
@@ -34,6 +34,35 @@ if (type === "fuse") {
     for (const path of test) {
       routes.push(path);
     }
+
+    for (const id of ids) {
+      routes.push(`/item/${id}`);
+      routes.push(`/en/item/${id}`);
+    }
+  }
+
+  if (environment === "production") {
+    // const index_path = "./server/data/index.json";
+    const index_path = "./public/data/index.json";
+    let rawdata_ = fs.readFileSync(index_path);
+    const rawdata: any[] = JSON.parse(rawdata_);
+
+    // const ids = rawdata //.slice(0,20)
+
+    
+    const ids = [];
+    for (const item of rawdata) {
+      // ids.push(item._id);
+      ids.push(item._id)
+    }
+    
+    /*
+    // resourcesync
+    const test = $rs(ids);
+    for (const path of test) {
+      routes.push(path);
+    }
+    */
 
     for (const id of ids) {
       routes.push(`/item/${id}`);
