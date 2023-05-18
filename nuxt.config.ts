@@ -236,14 +236,15 @@ export default defineNuxtConfig({
     */
   },
   generate: {
-    // routes,
+    routes,
   },
+  /*
   hooks: {
     async "nitro:config"(nitroConfig) {
       if (nitroConfig.prerender?.routes === undefined) {
         return;
       }
-      
+
       if (nitroConfig.dev) {
         return;
       }
@@ -251,6 +252,7 @@ export default defineNuxtConfig({
       nitroConfig.prerender.routes = routes;
     },
   },
+  */
   experimental: {
     inlineSSRStyles: false
   }

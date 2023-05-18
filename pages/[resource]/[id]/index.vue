@@ -9,9 +9,7 @@ const { t } = useI18n();
 
 const id = String(route.params.id);
 
-const label = ref(""); // item.label || "ラベルなし";
-
-let item: any = null
+let item: any = null;
 
 const runtimeConfig = useRuntimeConfig();
 const appUrl = runtimeConfig.public.appUrl;
@@ -24,17 +22,24 @@ if (process.server && nuxtApp.payload.data[id]) {
 }
 */
 
-console.log(process.server)
-
-console.log(nuxtApp.payload.data)
-
 if (nuxtApp.payload.data[id]) {
   item = nuxtApp.payload.data[id];
 } else {
-  
+  const url = `${appUrl}/data/index.json`;
+  const { data }: any = await useFetch(url);
+  for (const i of data.value) {
+    if (i._id === id) {
+      item = i;
+      break;
+    }
+  }
 }
 
 const resource = String(route.params.resource);
+
+const label = {
+  value: item ? item.label : "",
+};
 
 const path = {
   name: "resource",
