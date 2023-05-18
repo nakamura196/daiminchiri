@@ -29,12 +29,39 @@ export default defineNuxtPlugin((nuxtApp) => {
       cachedData["foo-bar"].forEach(
         (item: any) => (cachedData[item._id] = item)
       );
+
+      /*
+      cachedData["foo-bar"].forEach(
+        (item: any) => (vueApp.$nuxt.payload.data[item._id] = item)
+      )
+      */
     }
 
+    let url = String(vueApp.$nuxt.ssrContext?.url);
+    console.log({ url });
+
+    if (url.endsWith("/")) {
+      url = url.slice(0, -1);
+    }
+
+    const spl = url.split("/");
+
+    /*
     const slug: string =
-      vueApp.$nuxt.ssrContext?.url.split("/").slice(-1)[0] || "";
+      url.split("/").slice(-1)[0] || "";
+    */
+
+    const slug = spl[spl.length - 1];
+
+    console.log({ slug });
     if (cachedData[slug]) {
       vueApp.$nuxt.payload.data[slug] = cachedData[slug];
     }
   });
+
+  /*
+  nuxtApp.hook("app:mounted", async (vueApp) => {
+    console.log("aaa")
+  })
+  */
 });

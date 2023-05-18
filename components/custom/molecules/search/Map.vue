@@ -18,8 +18,12 @@ const id = "abc";
 const page = ref<number>(1);
 const fit_id = ref("");
 
+const runtimeConfig = useRuntimeConfig();
+const publicRuntimeConfig = runtimeConfig.public;
+const appUrl = publicRuntimeConfig.appUrl;
+
 const manifest =
-  "/iiif/main/manifest.json";
+appUrl + "/iiif/main/manifest.json";
 
 interface PropType {
   items: any[];
@@ -128,7 +132,6 @@ const updatedSeletecd = (e: any) => {
   }
 };
 
-const publicRuntimeConfig = useRuntimeConfig().public;
 const keys: any[] = publicRuntimeConfig.default.keys;
 
 const show_all = ref(true)

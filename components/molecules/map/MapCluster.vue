@@ -44,6 +44,10 @@ const emit = defineEmits<{
 }>()
 */
 
+const runtimeConfig = useRuntimeConfig();
+const publicRuntimeConfig = runtimeConfig.public;
+const appUrl = publicRuntimeConfig.appUrl;
+
 onMounted(() => {
   L.Map.addInitHook(function () {
     const markerCluster = L.markerClusterGroup({
@@ -56,7 +60,7 @@ onMounted(() => {
     for(const e of props.coordinates) {
       const marker = L.marker(e.c);
 
-      marker.bindPopup(`<a target="_blank" href="${e.to}">${e.label}</a>`);
+      marker.bindPopup(`<a target="_blank" href="${appUrl}${e.to}">${e.label}</a>`);
       markers.push(marker);
     }
 
