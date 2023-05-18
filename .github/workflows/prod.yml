@@ -46,6 +46,8 @@ jobs:
         run: npm i
 
       - name: Static HTML export with Nuxt
+        env:
+          NODE_OPTIONS: --max-old-space-size=16384
         run: npm run generate:production
 
       - name: Upload artifact

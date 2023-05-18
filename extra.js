@@ -28,7 +28,7 @@ export default {
       mode: "server",
     },
     prod: {
-      hostname: "https://nakamura196.github.io/map-app-daimin",
+      hostname: "https://nakamura196.github.io",
       baseUrl: "/map-app-daimin",
       mode: "server",
     },
