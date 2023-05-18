@@ -240,6 +240,10 @@ export default defineNuxtConfig({
   },
   hooks: {
     async "nitro:config"(nitroConfig) {
+      if (nitroConfig.prerender?.routes === undefined) {
+        return;
+      }
+      
       if (nitroConfig.dev) {
         return;
       }

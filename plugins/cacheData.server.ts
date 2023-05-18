@@ -38,22 +38,12 @@ export default defineNuxtPlugin((nuxtApp) => {
     }
 
     let url = String(vueApp.$nuxt.ssrContext?.url);
-    console.log({ url });
-
     if (url.endsWith("/")) {
       url = url.slice(0, -1);
     }
-
     const spl = url.split("/");
-
-    /*
-    const slug: string =
-      url.split("/").slice(-1)[0] || "";
-    */
-
     const slug = spl[spl.length - 1];
-
-    console.log({ slug });
+    
     if (cachedData[slug]) {
       vueApp.$nuxt.payload.data[slug] = cachedData[slug];
     }
