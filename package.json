@@ -27,6 +27,7 @@
     "fuse.js": "^6.6.2",
     "leaflet.markercluster": "^1.5.3",
     "nuxt-jsonld": "^2.0.8",
+    "nuxt-simple-sitemap": "^2.5.0",
     "openseadragon": "^4.0.0",
     "vuetify": "^3.2.5"
   }

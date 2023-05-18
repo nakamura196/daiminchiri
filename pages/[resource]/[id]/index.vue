@@ -19,6 +19,7 @@ const appUrl = runtimeConfig.public.appUrl;
 if (process.server && nuxtApp.payload.data[id]) {
   item = nuxtApp.payload.data[id];
 } else {
+  console.log("2")
 }
 
 const resource = String(route.params.resource);

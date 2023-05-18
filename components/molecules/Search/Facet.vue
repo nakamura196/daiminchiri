@@ -20,7 +20,7 @@ const props = withDefaults(defineProps<PropType>(), {
 });
 
 const publicRuntimeConfig = useRuntimeConfig().public;
-const t_all = publicruntimeConfig.public.t.all;
+const t_all = publicRuntimeConfig.t.all;
 
 //
 

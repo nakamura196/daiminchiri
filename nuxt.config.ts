@@ -139,16 +139,15 @@ export default defineNuxtConfig({
     "@nuxt/content",
     "@nuxtjs/i18n",
     // "@nuxtjs/sitemap",
+    "nuxt-simple-sitemap",
     "nuxt-jsonld",
   ],
-  /*
   sitemap: {
-    path: "/sitemap.xml",
+    // path: "/sitemap.xml",
     hostname,
     // exclude: ["/item/**", "/en/item/**"],
-    routes: routes,
+    // include: routes,
   },
-  */
   runtimeConfig: {
     public: config, // publicRuntimeConfig
   },
