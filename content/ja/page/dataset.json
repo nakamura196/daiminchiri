@@ -1,10 +1,9 @@
 [
-    
     {
         "label": "地名辞書",
         "description": "地名をまとめて利用するためのデータセット",
         "extent": "CSV",
-        "download": "/data/index.csv",
+        "download": "../data/index.csv",
         "_viewer": "/mirador/?manifest=/iiif/main/manifest.json",
         "_": [
             {
