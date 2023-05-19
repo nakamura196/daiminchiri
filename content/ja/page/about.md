@@ -31,7 +31,7 @@ title: このサイトについて
 | 関連ID       | 関連するデータのID                                    |
 | 地名・説明   | 図に書き込まれた文字                                  |
 | 地名種別     | 「地名・説明」の内容種別                              |
-| 区域         | 図で色分けされた区域　[区域一覧（表）](/page/kuiki)　　[区域一覧（図）](/media/daimin_kuikizu.jpg) |
+| 区域         | 図で色分けされた区域　[区域一覧（表）](/page/kuiki)　　[区域一覧（図）](https://static.toyobunko-lab.jp/daiminchiri/media/daimin_kuikizu.jpg) |
 |              | 　　\*区域1：主に「省」レベルの区域                   |
 |              | 　　\*区域2：主に「府」レベルの区域                   |
 |              | 　　\*区域色：区域ごとに塗られた地色                  |
