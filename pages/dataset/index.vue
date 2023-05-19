@@ -6,6 +6,9 @@ const { t } = useI18n();
 
 // const item = await queryContent(`/${locale.value}/page/` + "dataset").findOne();
 
+const runtimeConfig = useRuntimeConfig();
+const appUrl = runtimeConfig.public.appUrl;
+
 const item = {
   title: "dataset",
   "body": [
@@ -13,7 +16,7 @@ const item = {
         "label": "地名辞書",
         "description": "地名をまとめて利用するためのデータセット",
         "extent": "CSV",
-        "download": "/data/index.csv",
+        "download": `${appUrl}/data/index.csv`,
         "_viewer": "/mirador/?manifest=/iiif/main/manifest.json",
         "_": [
             {

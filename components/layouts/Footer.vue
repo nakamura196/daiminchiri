@@ -9,5 +9,5 @@ const html: any = {
 </script>
 
 <template>
-  <div class="bg-black text-center py-5" v-html="html[$i18n.locale]"></div>
+  <div class="bg-grey-darken-4 text-center py-5" v-html="html[$i18n.locale]"></div>
 </template>

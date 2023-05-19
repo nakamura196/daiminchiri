@@ -1,10 +1,13 @@
 <script setup lang="ts">
 import { mdiChevronDown } from "@mdi/js";
 
-const i18n = useI18n();
+const switchLocalePath = useSwitchLocalePath()
+const /*i18n*/ {locale} = useI18n();
 
-const changeLocale = (locale: string) => {
-  i18n.setLocale(locale);
+const changeLocale = (locale_: string) => {
+  // i18n.setLocale(locale);
+  // locale.value = locale;
+  locale.value = locale_;
 };
 </script>
 <template>
@@ -18,10 +21,12 @@ const changeLocale = (locale: string) => {
       </template>
       <v-card flat>
         <v-list>
-          <v-list-item @click="changeLocale('ja')" :active="$i18n.locale === 'ja'"
+          <!-- @click="changeLocale('ja')" -->
+          <v-list-item :to="switchLocalePath('ja')" :active="$i18n.locale === 'ja'"
             >日本語</v-list-item
           >
-          <v-list-item @click="changeLocale('en')" :active="$i18n.locale === 'en'"
+          <!-- @click="changeLocale('en')" -->
+          <v-list-item :to="switchLocalePath('en')" :active="$i18n.locale === 'en'"
             >English</v-list-item
           >
         </v-list>
