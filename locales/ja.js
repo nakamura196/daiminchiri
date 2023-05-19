@@ -110,5 +110,8 @@ export default {
     "format": "フォーマット",
     "download": "ダウンロード",
     "viewer": "ビューア",
-    "size": "サイズ"
+    "size": "サイズ",
+    "table": "表",
+    "bar": "棒グラフ",
+    "pie": "円グラフ",
 }

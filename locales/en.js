@@ -110,5 +110,8 @@ export default {
     "format": "Format",
     "download": "Download",
     "viewer": "Viewer",
-    "size": "Size"
+    "size": "Size",
+    "table": "Table",
+    "bar": "Bar Chart",
+    "pie": "Pie Chart",
 }
