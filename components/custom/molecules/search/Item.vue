@@ -29,11 +29,20 @@ const manifest =
     <div class="bg-sub">
       <v-container class="py-0">
         <ClientOnly>
+          <!--
           <OsdCustomViewer
+          :prefix_url="'runtimeConfig.public.appUrl'"
             :height="300"
             :manifest="manifest"
             :default_region="item.xywh"
           ></OsdCustomViewer>
+          -->
+          <MoleculesOsd3
+          :height="300"
+        :manifest="manifest"
+        :default_region="item.xywh"
+        :prefix_url="`${publicRuntimeConfig.appUrl}/images/`"
+      ></MoleculesOsd3>
         </ClientOnly>
       </v-container>
     </div>

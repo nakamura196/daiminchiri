@@ -143,7 +143,7 @@ const init = async () => {
   const config: any = {
     sequenceMode: true,
     id: "osd-" + id,
-    // prefixUrl: props.prefix_url,
+    prefixUrl: props.prefix_url,
     tileSources,
   };
 
