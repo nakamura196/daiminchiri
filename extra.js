@@ -9,9 +9,7 @@ export default {
     index_compressed: false,
     fuse: {
       search_all: true,
-    },
-    no_image:
-      "https://raw.githubusercontent.com/hi-ut/static_images/main/no_image.svg",
+    }
   },
   t: {
     all: false,
@@ -29,7 +27,7 @@ export default {
     },
     prod: {
       hostname: "https://static.toyobunko-lab.jp",
-      baseUrl: "/daimin",
+      baseUrl: "/daiminchiri",
       mode: "server",
     },
   },
