@@ -72,7 +72,7 @@ const isMobile = computed(() => {
     </v-list>
   </v-navigation-drawer>
 
-  <v-app-bar color="black" flat :absolute="true" density="compact">
+  <v-app-bar color="primary" flat :absolute="true" density="compact">
     
     <v-toolbar-title>
       <nuxt-link :to="localePath({name: 'index'})" style="text-decoration: none; color: inherit"

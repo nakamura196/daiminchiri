@@ -37,7 +37,7 @@ const bh = [
   {
     title: t("top"),
     disabled: false,
-    to: localePath({ name: "index" }),
+    to: localePath({ name: "index" })
   },
   {
     title: t(item.title),

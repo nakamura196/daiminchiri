@@ -48,10 +48,4 @@ export default defineNuxtPlugin((nuxtApp) => {
       vueApp.$nuxt.payload.data[slug] = cachedData[slug];
     }
   });
-
-  /*
-  nuxtApp.hook("app:mounted", async (vueApp) => {
-    console.log("aaa")
-  })
-  */
 });

@@ -266,7 +266,7 @@ const move = () => {
 };
 
 const updateOverlay = (page: number) => {
-  console.log("updateOverlay");
+  // console.log("updateOverlay");
   if (overlays[page]) {
     viewer.clearOverlays();
 

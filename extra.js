@@ -28,8 +28,8 @@ export default {
       mode: "server",
     },
     prod: {
-      hostname: "https://nakamura196.github.io",
-      baseUrl: "/map-app-daimin",
+      hostname: "https://static.toyobunko-lab.jp",
+      baseUrl: "/daimin",
       mode: "server",
     },
   },

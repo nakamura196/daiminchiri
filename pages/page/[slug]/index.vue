@@ -14,7 +14,6 @@ const bh = ref([
     to: localePath({
       name: "index",
     }),
-    color: "primary",
   },
 
   {
