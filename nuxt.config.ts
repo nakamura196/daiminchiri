@@ -56,12 +56,13 @@ if (type === "fuse") {
       ids.push(item._id)
     }
     
-    /*
+    
     // resourcesync
     const test = $rs(ids);
     for (const path of test) {
       routes.push(path);
     }
+    /*
     */
 
     for (const id of ids) {
