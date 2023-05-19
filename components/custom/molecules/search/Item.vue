@@ -18,8 +18,8 @@ const props = withDefaults(defineProps<PropType>(), {
 const publicRuntimeConfig = useRuntimeConfig().public;
 const details: any = publicRuntimeConfig.default.details;
 
-const manifest =
-  "https://gist.githubusercontent.com/nakamura196/91c2aab79528ee285270178aee0a7593/raw/cee7289eaaf7b6a623fcb1ffe2db6c8e833680f9/manifest.json";
+const manifest = `${publicRuntimeConfig.appUrl}/iiif/main/manifest2.json`
+  // "https://gist.githubusercontent.com/nakamura196/91c2aab79528ee285270178aee0a7593/raw/cee7289eaaf7b6a623fcb1ffe2db6c8e833680f9/manifest.json";
 
 // console.log(props.item)
 </script>

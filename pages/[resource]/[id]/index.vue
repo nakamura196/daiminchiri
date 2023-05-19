@@ -18,8 +18,9 @@ if (process.server && nuxtApp.payload.data[id]) {
   item = nuxtApp.payload.data[id];
 } else {
   const url = `${appUrl}/data/index.json`;
-  const { data }: any = await useFetch(url);
-  for (const i of data.value) {
+  const res = await fetch(url);
+  const data = await res.json();
+  for (const i of data) {
     if (i._id === id) {
       item = i;
       break;
@@ -43,7 +44,6 @@ const path = {
 const bh = reactive([
   {
     title: t("top"),
-    color: "primary",
     disabled: false,
     to: localePath({
       name: "index",
@@ -52,7 +52,6 @@ const bh = reactive([
   {
     title: t(resource),
     disabled: false,
-    color: "primary",
     to: localePath(path),
   },
   {

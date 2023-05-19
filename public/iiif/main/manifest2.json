@@ -1,0 +1,48 @@
+{
+    "@context": "http://iiif.io/api/presentation/2/context.json",
+    "@type": "sc:Manifest",
+    "label": "大明地理之図",
+    "sequences": [
+        {
+            "@type": "sc:Sequence",
+            "label": "Current Page Order",
+            "viewingDirection": "left-to-right",
+            "canvases": [
+                {
+                    "@id": "https://app.toyobunko-lab.jp/iiif/2/09fd29d5-8497-4def-a64d-ca104284f90d/canvas/p1",
+                    "@type": "sc:Canvas",
+                    "label": "1",
+                    "thumbnail": {
+                        "@id": "https://app.toyobunko-lab.jp/files/medium/e2845e32eb5f74fb6e1bcc7a994d902acceb1c17.jpg",
+                        "@type": "dctypes:Image",
+                        "format": "image/jpeg",
+                        "width": null,
+                        "height": null
+                    },
+                    "width": 29008,
+                    "height": 23339,
+                    "images": [
+                        {
+                            "@id": "https://app.toyobunko-lab.jp/iiif/2/09fd29d5-8497-4def-a64d-ca104284f90d/annotation/p0001-image",
+                            "@type": "oa:Annotation",
+                            "motivation": "sc:painting",
+                            "resource": {
+                                "@id": "https://img.toyobunko-lab.jp/iiif/inter_asia_research_network/daiminchiri/001.tif/full/full/0/default.jpg",
+                                "@type": "dctypes:Image",
+                                "format": "image/jpeg",
+                                "width": 29008,
+                                "height": 23339,
+                                "service": {
+                                    "@context": "http://iiif.io/api/image/2/context.json",
+                                    "@id": "https://img.toyobunko-lab.jp/iiif/inter_asia_research_network/daiminchiri/001.tif",
+                                    "profile": "http://iiif.io/api/image/2/level1.json"
+                                }
+                            },
+                            "on": "https://app.toyobunko-lab.jp/iiif/2/09fd29d5-8497-4def-a64d-ca104284f90d/canvas/p1"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

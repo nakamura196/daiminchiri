@@ -1,4 +1,4 @@
-# 日本史用語翻訳グロッサリー・データベース
+# 東洋文庫「大明地理之図」データベース
 
 Look at the [nuxt 3 documentation](https://v3.nuxtjs.org) to learn more.
 
