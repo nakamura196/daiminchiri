@@ -1,0 +1,47 @@
+{
+  "data": {
+    "@context": "https://schema.org/",
+    "@type": "Dataset",
+    "alternateName": "",
+    "creator": [
+      {
+        "@type": "Organization",
+        "name": "東洋文庫",
+        "sameAs": "http://www.toyo-bunko.or.jp/"
+      }
+    ],
+    "dateModified": "2023-05-23 15:54:06.960970",
+    "description": "東洋文庫が所蔵する大明地理之図のデータセットを公開しています。",
+    "distribution": [
+      {
+        "@type": "DataDownload",
+        "contentUrl": "https://static.toyobunko-lab.jp/daiminchiri/data/index.csv",
+        "encodingFormat": "text/csv"
+      }
+    ],
+    "identifier": [
+      "geonlp:toyobunko-daiminchiri"
+    ],
+    "isBasedOn": {
+      "@type": "CreativeWork",
+      "name": "東洋文庫「大明地理之図」データベース",
+      "url": "https://static.toyobunko-lab.jp/daiminchiri/"
+    },
+    "keywords": [
+      "大明地理之図",
+      "地名辞書"
+    ],
+    "license": "https://static.toyobunko-lab.jp/daiminchiri/page/use/",
+    "name": "大明地理之図・地名辞書",
+    "size": 3897,
+    "spatialCoverage": {
+      "@type": "Place",
+      "geo": {
+        "@type": "GeoShape",
+        "box": "14.79996 66.97497 47.64452 139.73199"
+      }
+    },
+    "temporalCoverage": "../..",
+    "url": "https://static.toyobunko-lab.jp/daiminchiri/dictionary/"
+  }
+}

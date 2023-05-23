@@ -44,6 +44,24 @@ const bh = [
     disabled: false,
   },
 ];
+
+const apis = [
+  {
+    "name": "JSON",
+    "description": "JSON形式のデータセット",
+    "url": `${appUrl}/api/items/index.json`
+  },
+  {
+    "name": t("sitemap"),
+    "description": "サイトマップ",
+    "url": `${appUrl}/sitemap.xml`
+  },
+  {
+    "name": t("resourcesync"),
+    "description": "ResourceSync",
+    "url": `${appUrl}/resourcesync/resourcelist-index.xml`
+  }
+]
 </script>
 <template>
   <LayoutsCommon :title="item.title" :items="bh">
@@ -80,6 +98,37 @@ const bh = [
               {{ row.viewer }}
             </a>
           </td>
+        </tr>
+      </tbody>
+    </v-table>
+
+    <v-btn class="mt-10" color="primary" flat :to="localePath({name: 'dictionary'})">地名辞書</v-btn>
+
+    <h2 class="mt-10">{{ "API" }}</h2>
+
+    <v-table>
+      <thead>
+        <tr>
+          <td>{{ $t("name") }}</td>
+          <td>{{ $t("description") }}</td>
+          <td>{{ $t("url") }}</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="api in apis">
+          <td width="20%">
+            {{ api.name }}
+          </td>
+          <td width="40%">
+            {{ api.description }}
+          </td>
+          <td width="40%">
+            <a :href="api.url">
+              
+            {{ api.url }}
+            </a>
+          </td>
+          
         </tr>
       </tbody>
     </v-table>
