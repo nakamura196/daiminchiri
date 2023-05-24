@@ -256,5 +256,8 @@ export default defineNuxtConfig({
   */
   experimental: {
     inlineSSRStyles: false
-  }
+  },
+  router: {
+    // trailingSlash: true,
+  },
 });
