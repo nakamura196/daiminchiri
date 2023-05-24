@@ -145,6 +145,7 @@ export default defineNuxtConfig({
   ],
   sitemap: {
     // path: "/sitemap.xml",
+    siteUrl: appUrl,
     hostname,
     // exclude: ["/item/**", "/en/item/**"],
     // include: routes,

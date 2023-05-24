@@ -5,13 +5,15 @@ export default defineNuxtRouteMiddleware((to, _from) => {
     // 直接末尾スラッシュなしアクセスした場合を考慮
     if (to.path.endsWith('index.html')) {
       return navigateTo(
-        { path: to.path.replace(/index.html$/, ''), query: to.query },
+        { path: to.path.replace(/index.html$/, ''), query: to.query, params: to.params },
         { redirectCode: 301 }
       )
     }
+
+    
     // 末尾スラッシュありにリダイレクト
-    if (!to.path.endsWith('/')) {
-      return navigateTo({ path: `${to.path}/`, query: to.query }, { redirectCode: 301 })
+    if (!process.server && !to.path.endsWith('/')) {
+      return navigateTo({ path: `${to.path}/`, query: to.query, params: to.params }, { redirectCode: 301 })
     }
   })
   
