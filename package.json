@@ -20,7 +20,6 @@
     "nuxt": "3.5.0",
     "sass": "^1.62.1"
   },
-  "_": "file:../../nuxt3/osd-custom-viewer2/nakamura196-osd-custom-viewer-2.26.0.tgz",
   "dependencies": {
     "@nakamura196/osd-custom-viewer": "^2.27.0",
     "@types/chart.js": "^2.9.37",
